@@ -161,6 +161,10 @@
     @apply hover:border-orange-300 dark:hover:border-orange-500;
     @apply hover:bg-orange-50 dark:hover:bg-orange-900/20;
   }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+  }
 }
 
 @layer utilities {

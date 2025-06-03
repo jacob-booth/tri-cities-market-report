@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import ChartBlock from './ChartBlock';
+import FactCheckButton from './FactCheckButton';
 import type { Section } from '../types/report';
 
 interface SectionCardProps {
@@ -50,9 +51,14 @@ const SectionCard: React.FC<SectionCardProps> = ({
 
       {/* Content Preview */}
       <div className="prose prose-gray dark:prose-invert max-w-none">
-        <p className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed mb-4">
-          {section.content[0]}
-        </p>
+        <div className="relative">
+          <p className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed mb-4">
+            {section.content[0]}
+          </p>
+          <div className="flex justify-end mb-4">
+            <FactCheckButton content={section.content[0]} itemIndex={0} />
+          </div>
+        </div>
         
         {/* Expand/Collapse Button */}
         {section.content.length > 1 && (
@@ -85,12 +91,14 @@ const SectionCard: React.FC<SectionCardProps> = ({
           >
             <div className="prose prose-gray dark:prose-invert max-w-none space-y-4">
               {section.content.slice(1).map((paragraph, index) => (
-                <p 
-                  key={index} 
-                  className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed"
-                >
-                  {paragraph}
-                </p>
+                <div key={index} className="relative">
+                  <p className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed">
+                    {paragraph}
+                  </p>
+                  <div className="flex justify-end mt-2 mb-4">
+                    <FactCheckButton content={paragraph} itemIndex={index + 1} />
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -134,11 +142,16 @@ const SectionCard: React.FC<SectionCardProps> = ({
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 Strengths
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {section.swot.strengths.map((item, index) => (
-                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm flex items-start gap-2">
-                    <span className="text-green-500 mt-1">•</span>
-                    {item}
+                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm">
+                    <div className="flex items-start gap-2 mb-2">
+                      <span className="text-green-500 mt-1 flex-shrink-0">•</span>
+                      <span className="flex-1">{item}</span>
+                    </div>
+                    <div className="ml-4">
+                      <FactCheckButton content={item} itemIndex={index} />
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -156,11 +169,16 @@ const SectionCard: React.FC<SectionCardProps> = ({
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 Weaknesses
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {section.swot.weaknesses.map((item, index) => (
-                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm flex items-start gap-2">
-                    <span className="text-red-500 mt-1">•</span>
-                    {item}
+                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm">
+                    <div className="flex items-start gap-2 mb-2">
+                      <span className="text-red-500 mt-1 flex-shrink-0">•</span>
+                      <span className="flex-1">{item}</span>
+                    </div>
+                    <div className="ml-4">
+                      <FactCheckButton content={item} itemIndex={index} />
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -178,11 +196,16 @@ const SectionCard: React.FC<SectionCardProps> = ({
                 <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                 Opportunities
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {section.swot.opportunities.map((item, index) => (
-                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    {item}
+                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm">
+                    <div className="flex items-start gap-2 mb-2">
+                      <span className="text-blue-500 mt-1 flex-shrink-0">•</span>
+                      <span className="flex-1">{item}</span>
+                    </div>
+                    <div className="ml-4">
+                      <FactCheckButton content={item} itemIndex={index} />
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -200,11 +223,16 @@ const SectionCard: React.FC<SectionCardProps> = ({
                 <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
                 Threats
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {section.swot.threats.map((item, index) => (
-                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm flex items-start gap-2">
-                    <span className="text-orange-500 mt-1">•</span>
-                    {item}
+                  <li key={index} className="text-gray-800 dark:text-gray-200 font-poppins text-sm">
+                    <div className="flex items-start gap-2 mb-2">
+                      <span className="text-orange-500 mt-1 flex-shrink-0">•</span>
+                      <span className="flex-1">{item}</span>
+                    </div>
+                    <div className="ml-4">
+                      <FactCheckButton content={item} itemIndex={index} />
+                    </div>
                   </li>
                 ))}
               </ul>
