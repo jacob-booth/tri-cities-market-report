@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, AlertTriangle, X } from 'lucide-react';
+import { Shield, CheckCircle, AlertTriangle, X, ExternalLink } from 'lucide-react';
+import factCheckData from '../data/factCheckDatabase.json';
 
 interface FactCheckButtonProps {
   content: string;
@@ -8,10 +9,14 @@ interface FactCheckButtonProps {
 }
 
 interface FactCheckResult {
-  status: 'verified' | 'partial' | 'disputed';
+  status: 'verified' | 'partially-verified' | 'needs-verification' | 'needs-context' | 'needs-clarification' | 'unverified';
   confidence: number;
   explanation: string;
-  sources: string[];
+  sources: Array<{
+    title: string;
+    url: string;
+    excerpt: string;
+  }>;
 }
 
 const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 0 }) => {
@@ -20,97 +25,149 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
   const [showResult, setShowResult] = useState(false);
   const [animatedText, setAnimatedText] = useState('');
 
-  const generateFactCheck = async (text: string): Promise<FactCheckResult> => {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 2000 + Math.random() * 2000));
-    
-    // Mock fact-check results based on content
-    const results: FactCheckResult[] = [
-      {
-        status: 'verified',
-        confidence: 94,
-        explanation: 'This statement is supported by multiple reliable data sources including US Census Bureau, Tennessee Department of Economic Development, and regional MLS data from the past 12 months.',
-        sources: ['US Census Bureau 2023', 'TN Dept. of Economic Development', 'Regional MLS Data Q3 2024']
-      },
-      {
-        status: 'partial',
-        confidence: 78,
-        explanation: 'This claim is generally accurate but may vary by specific location within the Tri-Cities region. Some areas show different trends than the regional average.',
-        sources: ['Bureau of Labor Statistics', 'Regional Planning Commission', 'Local Market Analysis 2024']
-      },
-      {
-        status: 'verified',
-        confidence: 91,
-        explanation: 'Data confirmed across multiple real estate databases and government statistical sources. Numbers reflect current market conditions as of Q3 2024.',
-        sources: ['Federal Housing Finance Agency', 'NAR Market Statistics', 'Local Realtor Association Data']
+  // Map content to fact-check database entries
+  const getFactCheckId = (text: string): string | null => {
+    const contentMap: Record<string, string> = {
+      // Population data
+      'Johnson City serves as the regional population center with 73,635 residents': 'johnson-city-population',
+      'Regional population grew by 12,682 people from 2021-2023': 'johnson-city-population',
+      
+      // Income data
+      'Median household income of $55,400 in Johnson City': 'median-household-income',
+      
+      // Age demographics
+      "The region's median age of 35.1 years": 'median-age',
+      
+      // Employment data
+      'Ballad Health leads regional employment with approximately 15,000 employees': 'ballad-health-employees',
+      'Eastman Chemical Company in Kingsport employs approximately 7,000 workers': 'eastman-chemical-employees',
+      'The region maintained a remarkably low 3.0% unemployment rate': 'unemployment-rate',
+      'East Tennessee State University contributes over 2,500 direct employees': 'etsu-employees',
+      
+      // Economic indicators
+      'Consumer spending surged 9.8% in 2023': 'consumer-spending-growth',
+      "Johnson City's median home price reached $392,000": 'home-price-johnson-city',
+      
+      // General economic health
+      'strong economic resilience': 'poverty-rate'
+    };
+
+    // Find the best match for the content
+    for (const [key, id] of Object.entries(contentMap)) {
+      if (text.includes(key)) {
+        return id;
       }
-    ];
+    }
     
-    return results[Math.floor(Math.random() * results.length)];
+    return null;
   };
 
-  const typeWriter = async (text: string, speed: number = 30) => {
+  const getFactCheckResult = (text: string): FactCheckResult | null => {
+    const factCheckId = getFactCheckId(text);
+    if (!factCheckId || !(factCheckData.factChecks as any)[factCheckId]) {
+      return null;
+    }
+
+    const data = (factCheckData.factChecks as any)[factCheckId];
+    return {
+      status: data.status as FactCheckResult['status'],
+      confidence: data.confidence,
+      explanation: data.explanation,
+      sources: data.sources
+    };
+  };
+
+  const typewriterEffect = async (text: string) => {
     setAnimatedText('');
     for (let i = 0; i <= text.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 20));
       setAnimatedText(text.slice(0, i));
-      await new Promise(resolve => setTimeout(resolve, speed));
     }
   };
 
   const handleFactCheck = async () => {
-    if (isChecking || result) return;
-    
     setIsChecking(true);
-    setResult(null);
     setShowResult(false);
+    setAnimatedText('');
+
+    // Simulate thinking time
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    const factCheckResult = getFactCheckResult(content);
     
-    try {
-      const factCheckResult = await generateFactCheck(content);
+    if (factCheckResult) {
       setResult(factCheckResult);
       setShowResult(true);
-      
-      // Start typing animation after result appears
-      setTimeout(() => {
-        typeWriter(factCheckResult.explanation, 25);
-      }, 500);
-      
-    } catch (error) {
-      console.error('Fact check failed:', error);
-    } finally {
       setIsChecking(false);
+      
+      // Start typewriter effect for explanation
+      await typewriterEffect(factCheckResult.explanation);
+    } else {
+      // Fallback for content without pre-fact-checked data
+      const fallbackResult: FactCheckResult = {
+        status: 'unverified',
+        confidence: 0,
+        explanation: 'This claim has not been fact-checked yet. We are working to verify all content with reliable sources.',
+        sources: []
+      };
+      
+      setResult(fallbackResult);
+      setShowResult(true);
+      setIsChecking(false);
+      await typewriterEffect(fallbackResult.explanation);
     }
   };
 
-  const closeResult = () => {
-    setShowResult(false);
-    setResult(null);
-    setAnimatedText('');
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'verified': return <CheckCircle className="w-5 h-5 text-green-500" />;
-      case 'partial': return <AlertTriangle className="w-5 h-5 text-yellow-500" />;
-      case 'disputed': return <X className="w-5 h-5 text-red-500" />;
-      default: return <Shield className="w-5 h-5" />;
+  const getStatusIcon = () => {
+    if (!result) return null;
+    
+    switch (result.status) {
+      case 'verified':
+        return <CheckCircle className="w-5 h-5 text-green-500" />;
+      case 'partially-verified':
+        return <CheckCircle className="w-5 h-5 text-yellow-500" />;
+      case 'needs-verification':
+      case 'needs-context':
+      case 'needs-clarification':
+        return <AlertTriangle className="w-5 h-5 text-orange-500" />;
+      default:
+        return <AlertTriangle className="w-5 h-5 text-red-500" />;
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'verified': return 'text-green-600 dark:text-green-400';
-      case 'partial': return 'text-yellow-600 dark:text-yellow-400';
-      case 'disputed': return 'text-red-600 dark:text-red-400';
-      default: return 'text-gray-600 dark:text-gray-400';
+  const getStatusColor = () => {
+    if (!result) return 'bg-gray-100';
+    
+    switch (result.status) {
+      case 'verified':
+        return 'bg-green-50 border-green-200';
+      case 'partially-verified':
+        return 'bg-yellow-50 border-yellow-200';
+      case 'needs-verification':
+      case 'needs-context':
+      case 'needs-clarification':
+        return 'bg-orange-50 border-orange-200';
+      default:
+        return 'bg-red-50 border-red-200';
     }
   };
 
-  const getStatusBg = (status: string) => {
-    switch (status) {
-      case 'verified': return 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700';
-      case 'partial': return 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700';
-      case 'disputed': return 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700';
-      default: return 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-600';
+  const getStatusLabel = () => {
+    if (!result) return '';
+    
+    switch (result.status) {
+      case 'verified':
+        return 'Verified';
+      case 'partially-verified':
+        return 'Partially Verified';
+      case 'needs-verification':
+        return 'Needs Verification';
+      case 'needs-context':
+        return 'Needs Context';
+      case 'needs-clarification':
+        return 'Needs Clarification';
+      default:
+        return 'Unverified';
     }
   };
 
@@ -119,136 +176,129 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
       {/* Fact Check Button */}
       <motion.button
         onClick={handleFactCheck}
-        disabled={isChecking}
-        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-          isChecking 
-            ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 cursor-not-allowed' 
-            : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 active:scale-95'
-        }`}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: itemIndex * 0.1 }}
+        className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-200"
       >
         <motion.div
           animate={isChecking ? { rotate: 360 } : { rotate: 0 }}
-          transition={{ duration: 1, repeat: isChecking ? Infinity : 0, ease: "linear" }}
+          transition={isChecking ? { duration: 1, repeat: Infinity, ease: "linear" } : { duration: 0.3 }}
         >
           <Shield className="w-3.5 h-3.5" />
         </motion.div>
         {isChecking ? 'Checking...' : 'Fact Check'}
       </motion.button>
 
-      {/* Fact Check Result Modal/Overlay */}
+      {/* Fact Check Modal */}
       <AnimatePresence>
         {showResult && result && (
-          <>
-            {/* Mobile-first overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowResult(false)}
+          >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-4"
-              onClick={closeResult}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className={`w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border-2 p-6 shadow-2xl ${getStatusColor()} backdrop-blur-md`}
+              onClick={(e) => e.stopPropagation()}
             >
-              <motion.div
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: "100%", opacity: 0 }}
-                transition={{ type: "spring", damping: 25, stiffness: 500 }}
-                className={`w-full max-w-lg rounded-t-3xl sm:rounded-3xl p-6 max-h-[80vh] overflow-y-auto ${getStatusBg(result.status)} border-2`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: "spring", stiffness: 500 }}
-                    >
-                      {getStatusIcon(result.status)}
-                    </motion.div>
-                    <div>
-                      <h3 className={`font-cinzel font-semibold text-lg ${getStatusColor(result.status)}`}>
-                        {result.status === 'verified' ? 'Verified' : 
-                         result.status === 'partial' ? 'Partially Verified' : 'Disputed'}
-                      </h3>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
-                        Confidence: {result.confidence}%
-                      </p>
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  {getStatusIcon()}
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                      Fact Check Result
+                    </h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        {getStatusLabel()}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <div className="w-16 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${result.confidence}%` }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            className={`h-full rounded-full ${
+                              result.confidence >= 80 ? 'bg-green-500' :
+                              result.confidence >= 60 ? 'bg-yellow-500' :
+                              'bg-red-500'
+                            }`}
+                          />
+                        </div>
+                        <span className="text-xs text-gray-500">
+                          {result.confidence}%
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <button
-                    onClick={closeResult}
-                    className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
                 </div>
+                
+                <button
+                  onClick={() => setShowResult(false)}
+                  className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
 
-                {/* Confidence Bar */}
-                <div className="mb-6">
-                  <div className="bg-gray-200 dark:bg-gray-600 rounded-full h-2 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${result.confidence}%` }}
-                      transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
-                      className={`h-full ${
-                        result.status === 'verified' ? 'bg-green-500' :
-                        result.status === 'partial' ? 'bg-yellow-500' : 'bg-red-500'
-                      }`}
-                    />
-                  </div>
-                </div>
+              {/* Explanation */}
+              <div className="mb-6">
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Analysis
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {animatedText}
+                  <span className="animate-pulse">|</span>
+                </p>
+              </div>
 
-                {/* Animated Explanation */}
-                <div className="mb-6">
-                  <h4 className="font-cinzel font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                    Analysis
-                  </h4>
-                  <div className="min-h-[60px] bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                      className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed"
-                    >
-                      {animatedText}
-                      <motion.span
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{ duration: 0.8, repeat: Infinity }}
-                        className="inline-block w-0.5 ml-1 bg-primary-500"
-                      >
-                        |
-                      </motion.span>
-                    </motion.p>
-                  </div>
-                </div>
-
-                {/* Sources */}
+              {/* Sources */}
+              {result.sources && result.sources.length > 0 && (
                 <div>
-                  <h4 className="font-cinzel font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                  <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
                     Sources
                   </h4>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {result.sources.map((source, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 bg-white/30 dark:bg-gray-700/30 rounded-lg p-2"
+                        transition={{ delay: 0.1 * index }}
+                        className="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-600"
                       >
-                        <div className="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0" />
-                        {source}
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex-1">
+                            <h5 className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">
+                              {source.title}
+                            </h5>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+                              "{source.excerpt}"
+                            </p>
+                          </div>
+                          <a
+                            href={source.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-shrink-0 p-1 text-primary-600 hover:text-primary-700 transition-colors"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              )}
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

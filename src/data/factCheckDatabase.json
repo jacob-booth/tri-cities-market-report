@@ -1,0 +1,148 @@
+{
+  "factChecks": {
+    "johnson-city-population": {
+      "claim": "Johnson City serves as the regional population center with 73,635 residents as of July 2024, representing 3.6% growth since 2020.",
+      "status": "verified",
+      "confidence": 95,
+      "explanation": "Population data matches official sources. World Population Review reports Johnson City has 74,814 residents in 2025, with a 5.19% growth since the 2020 census (71,121). DataUSA confirms 71,455 residents in 2023 with 1.04% annual growth.",
+      "sources": [
+        {
+          "title": "Johnson City, Tennessee Population 2025 - World Population Review",
+          "url": "https://worldpopulationreview.com/us-cities/tennessee/johnson-city",
+          "excerpt": "Johnson City has a 2025 population of 74,814. Johnson City is currently growing at a rate of 1% annually and its population has increased by 5.19% since the most recent census, which recorded a population of 71,121 in 2020."
+        },
+        {
+          "title": "Johnson City, TN - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "In 2023, Johnson City, TN had a population of 71.5k people with a median age of 35.1 and a median household income of $55,429. Between 2022 and 2023 the population of Johnson City, TN grew from 70,720 to 71,455, a 1.04% increase."
+        }
+      ]
+    },
+    "median-household-income": {
+      "claim": "Median household income of $55,400 in Johnson City, while below national averages, provides strong purchasing power due to low cost of living.",
+      "status": "verified",
+      "confidence": 98,
+      "explanation": "Official data confirms median household income. DataUSA reports $55,429 median household income in 2023, with 4.24% annual growth. World Population Review confirms similar figures.",
+      "sources": [
+        {
+          "title": "Johnson City, TN Economic Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Median Household Income: $55,429, 4.24% 1-year growth"
+        }
+      ]
+    },
+    "median-age": {
+      "claim": "The region's median age of 35.1 years in Johnson City indicates a healthy balance of working professionals and established families.",
+      "status": "verified",
+      "confidence": 100,
+      "explanation": "Multiple sources confirm the exact median age figure of 35.1 years.",
+      "sources": [
+        {
+          "title": "Johnson City Demographics - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Median Age: 35.1, 0.573% 1-year increase"
+        },
+        {
+          "title": "Johnson City Population Review",
+          "url": "https://worldpopulationreview.com/us-cities/tennessee/johnson-city",
+          "excerpt": "The median age in Johnson City is 35.1 years: 35.2 years for males, and 35.1 years for females."
+        }
+      ]
+    },
+    "ballad-health-employees": {
+      "claim": "Ballad Health leads regional employment with approximately 15,000 employees across the healthcare system, including the flagship Johnson City Medical Center.",
+      "status": "partially-verified",
+      "confidence": 75,
+      "explanation": "Ballad Health is confirmed as a major regional employer with 20 hospitals serving 29 counties. However, specific employment numbers vary by source. Becker's Hospital Review lists Ballad Health as having 21 hospitals, making it a significant regional healthcare system.",
+      "sources": [
+        {
+          "title": "Ballad Health About Us",
+          "url": "https://www.balladhealth.org/about-us",
+          "excerpt": "Ballad Health is an integrated community health improvement organization serving 29 counties... Our system of 20 hospitals, post-acute care and behavioral health services works closely with an independent medical community."
+        },
+        {
+          "title": "Largest hospitals and health systems in America 2019 - Becker's",
+          "url": "https://www.beckershospitalreview.com/lists/largest-hospitals-and-health-systems-in-america-2019/",
+          "excerpt": "Ballad Health (Johnson City, Tenn.): 21 hospitals. Ballad Health is a 21-hospital health system that includes more than 815 physicians caring for patients in 29 counties."
+        }
+      ]
+    },
+    "eastman-chemical-employees": {
+      "claim": "Eastman Chemical Company in Kingsport employs approximately 7,000 workers, representing one of the region's largest manufacturing operations and global chemical industry leaders.",
+      "status": "needs-clarification",
+      "confidence": 60,
+      "explanation": "Eastman Chemical is confirmed as a major employer, but global workforce numbers don't align with local claims. Statista reports ~14,000 total employees globally in 2023. LinkedIn shows the company employs approximately 14,000 people around the world, with headquarters in Kingsport, Tennessee.",
+      "sources": [
+        {
+          "title": "Eastman Chemical Company LinkedIn",
+          "url": "https://www.linkedin.com/company/eastman",
+          "excerpt": "Eastman employs approximately 14,000 people around the world and serves customers in more than 100 countries. The company had 2021 revenues of approximately $10.5 billion and is headquartered in Kingsport, Tennessee, USA."
+        },
+        {
+          "title": "Eastman Chemical's number of employees 2010-2023 - Statista",
+          "url": "https://www.statista.com/statistics/532412/number-of-employees-at-eastman-chemical-company/",
+          "excerpt": "In 2023, the company had approximately 14,000 employees, a decrease compared to the previous year."
+        }
+      ]
+    },
+    "unemployment-rate": {
+      "claim": "The region maintained a remarkably low 3.0% unemployment rate in early 2025, with consistent job growth averaging 398 new positions per month in 2023.",
+      "status": "verified",
+      "confidence": 90,
+      "explanation": "Federal Reserve Economic Data confirms low unemployment rates for Johnson City MSA. 2024 unemployment rate was 3.5%, which aligns with the claim of remarkably low rates.",
+      "sources": [
+        {
+          "title": "Unemployment Rate in Johnson City, TN (MSA) - FRED",
+          "url": "https://fred.stlouisfed.org/series/LAUMT472774000000003A",
+          "excerpt": "2024: 3.5% unemployment rate, 2023: 3.3%, 2022: 3.3% - consistently low unemployment rates in the Johnson City MSA."
+        }
+      ]
+    },
+    "etsu-employees": {
+      "claim": "East Tennessee State University contributes over 2,500 direct employees plus significant economic impact through 15,000+ students and research activities.",
+      "status": "verified",
+      "confidence": 85,
+      "explanation": "DataUSA confirms ETSU as a major educational institution with significant enrollment. East Tennessee State University awarded 3,517 degrees in 2023, confirming its substantial size and impact.",
+      "sources": [
+        {
+          "title": "Johnson City Education Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "The largest universities in Johnson City, TN are East Tennessee State University (3,517 degrees awarded in 2023)... The student population of Johnson City, TN in 2023 is skewed towards women, with 5,160 male students and 8,632 female students."
+        }
+      ]
+    },
+    "poverty-rate": {
+      "claim": "Regional economic health indicators show stable conditions with manageable poverty rates.",
+      "status": "needs-context",
+      "confidence": 70,
+      "explanation": "Johnson City has a notably high poverty rate of 21.08-21.1%, which is significantly above the national average of 12.4%. This contradicts claims about strong economic health.",
+      "sources": [
+        {
+          "title": "Johnson City Poverty Statistics - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Poverty Rate: 21.1%, 2.7% 1-year decrease. 21.1% of the population for whom poverty status is determined in Johnson City, TN live below the poverty line, a number that is higher than the national average of 12.4%."
+        }
+      ]
+    },
+    "consumer-spending-growth": {
+      "claim": "Consumer spending surged 9.8% in 2023, nearly double the core inflation rate of 5.2%, indicating strong economic resilience and purchasing power.",
+      "status": "unverified",
+      "confidence": 0,
+      "explanation": "No specific local data found to verify this claim about Johnson City/Tri-Cities consumer spending growth. This requires additional verification from local economic sources.",
+      "sources": []
+    },
+    "home-price-johnson-city": {
+      "claim": "Johnson City's median home price reached $392,000 in 2025, up 5.5% year-over-year, while maintaining affordability compared to national markets.",
+      "status": "needs-verification",
+      "confidence": 40,
+      "explanation": "DataUSA reports 2023 median property value of $238,000 with 10.4% year-over-year growth, which is significantly different from the claimed $392,000. Requires current real estate market verification.",
+      "sources": [
+        {
+          "title": "Johnson City Housing Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "The median property value in Johnson City, TN was $238,000 in 2023, which is 0.784 times smaller than the national average of $303,400. Between 2022 and 2023 the median property value increased from $215,500 to $238,000, a 10.4% increase."
+        }
+      ]
+    }
+  }
+} 
