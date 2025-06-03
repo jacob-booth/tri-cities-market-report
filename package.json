@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://yourusername.github.io/tri-cities-market-report",
+  "homepage": "https://jacob-booth.github.io/tri-cities-market-report",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
