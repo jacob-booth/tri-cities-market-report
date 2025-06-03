@@ -53,7 +53,7 @@ BOOTH is a leading market research and strategic analysis firm specializing in r
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/tri-cities-market-report.git
+git clone https://github.com/jacob-booth/tri-cities-market-report.git
 cd tri-cities-market-report
 ```
 
@@ -157,4 +157,4 @@ For questions about this report or BOOTH services:
 
 ---
 
-*Built with ❤️ by the BOOTH Research Team* 
+*Built with ❤️ by the BOOTH Research Team*
