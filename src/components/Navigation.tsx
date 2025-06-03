@@ -82,7 +82,7 @@ const Navigation: React.FC<NavigationProps> = ({
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-1 left-0 right-0 z-40 px-4"
+        className="fixed top-2 left-0 right-0 z-40 px-4"
       >
         <div className="max-w-7xl mx-auto">
           <div className="glass-effect rounded-2xl px-6 py-4 shadow-booth">
@@ -95,7 +95,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 >
                   <div className="w-8 h-8 flex items-center justify-center">
                     <img 
-                      src="/booth-logo.png" 
+                      src="./booth-logo.png" 
                       alt="BOOTH" 
                       className="w-8 h-8 object-contain"
                     />

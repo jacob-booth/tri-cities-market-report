@@ -48,7 +48,7 @@ const GlossaryDrawer: React.FC<GlossaryDrawerProps> = ({
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <img 
-                    src="/booth-logo.png" 
+                    src="./booth-logo.png" 
                     alt="BOOTH" 
                     className="w-8 h-8 object-contain"
                   />

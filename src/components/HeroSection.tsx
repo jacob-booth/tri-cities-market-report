@@ -89,7 +89,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated Background */}
       <div className="absolute inset-0 booth-gradient animate-gradient-xy opacity-90" />
       
@@ -128,7 +128,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         >
           <div className="flex items-center justify-center gap-4 mb-6">
             <img 
-              src="/booth-logo.png" 
+              src="./booth-logo.png" 
               alt="BOOTH" 
               className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
             />
