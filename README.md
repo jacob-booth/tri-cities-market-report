@@ -1,260 +1,160 @@
-# 🏞️ Tri-Cities Market Research Report
+# BOOTH Tri-Cities Market Report
 
-**An ultra-modern, interactive digital transformation of the Enhanced Market Research Report for the Tri-Cities Region (Johnson City, Kingsport, Bristol, Tennessee)**
+A comprehensive real estate market analysis for the Tri-Cities region of Tennessee, featuring interactive data visualizations and professional market insights.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge)](https://yourusername.github.io/tri-cities-market-report)
-[![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-green?style=for-the-badge)](https://pages.github.com/)
-[![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![Styled with Tailwind](https://img.shields.io/badge/Styled%20with-Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+## 🏢 About BOOTH
 
-## ✨ Features
+BOOTH is a leading market research and strategic analysis firm specializing in regional real estate markets. This report provides in-depth analysis of the Johnson City, Kingsport, and Bristol metropolitan area.
 
-### 🚀 **Ultra-Modern UX/UI**
-- **Glass-morphism design** with ETSU navy & Boone Lake teal theming
-- **Framer Motion animations** with smooth page transitions
-- **Responsive design** optimized for all devices (320px+)
-- **Dark/Light mode** toggle with system preference detection
+## 🚀 Features
 
-### 📊 **Interactive Data Visualization**
-- **Recharts integration** for responsive, beautiful charts
-- **Animated counters** in hero section with real-time count-ups
-- **Interactive SWOT analysis** with hover-reveal details
-- **Population & economic trend** visualizations
+- **Interactive Data Visualizations** - Dynamic charts and graphs powered by Recharts
+- **Responsive Design** - Optimized for desktop, tablet, and mobile viewing
+- **Dark Mode Support** - Toggle between light and dark themes
+- **Search Functionality** - Quick search through report sections
+- **Professional Styling** - BOOTH brand colors and typography
+- **Real Market Data** - Authentic Tennessee real estate market insights
 
-### 🔍 **Advanced Search & Navigation**
-- **Fuzzy search** powered by Fuse.js across all content
-- **Sticky scroll-spy navigation** with smooth anchor links
-- **Citation system** with clickable references
-- **Keyboard accessibility** throughout
+## 🛠️ Technology Stack
 
-### 📱 **Mobile-First Design**
-- **Collapsible navigation** on mobile devices
-- **Touch-optimized interactions** and gestures
-- **Progressive enhancement** for all screen sizes
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **Animations**: Framer Motion
+- **Search**: Fuse.js
+- **Icons**: Lucide React
 
-## 🛠️ Tech Stack
+## 📊 Report Sections
 
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| **Framework** | React 18 + TypeScript | Component architecture & type safety |
-| **Build Tool** | Vite | Lightning-fast development & builds |
-| **Styling** | Tailwind CSS | Utility-first styling with JIT compilation |
-| **Charts** | Recharts | React-native responsive charts |
-| **Animation** | Framer Motion | Smooth animations & page transitions |
-| **Search** | Fuse.js | Fuzzy search functionality |
-| **Icons** | Lucide React | Beautiful, consistent iconography |
-| **Deployment** | GitHub Pages | Static hosting with automated deployment |
+1. **Executive Summary** - Key findings and market overview
+2. **Market Overview** - Comprehensive market analysis
+3. **Demographics** - Population and demographic trends
+4. **Economic Indicators** - Employment and economic data
+5. **Regional Infrastructure** - Quality of life metrics
+6. **Market Trends & Forecasting** - Future projections
 
-## 🚀 Quick Start
+## 🎨 Design Features
+
+- **BOOTH Brand Colors**: Purple, blue, and navy color scheme
+- **Typography**: Cinzel (headings) and Poppins (body text)
+- **Glass Morphism**: Modern UI with backdrop blur effects
+- **Smooth Animations**: Framer Motion powered transitions
+- **Professional Layout**: Clean, report-style presentation
+
+## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 16+ 
 - npm or yarn
-- Git
 
 ### Installation
 
+1. Clone the repository:
 ```bash
-# Clone the repository
 git clone https://github.com/yourusername/tri-cities-market-report.git
 cd tri-cities-market-report
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Open your browser to http://localhost:5173
 ```
 
-### Development Commands
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+### Building for Production
 
 ```bash
-# Start development server
-npm run dev
-
-# Build for production
 npm run build
+```
 
-# Preview production build
-npm run preview
+### Deployment
 
-# Deploy to GitHub Pages
+Deploy to GitHub Pages:
+```bash
 npm run deploy
-
-# Run linting
-npm run lint
 ```
 
 ## 📁 Project Structure
 
 ```
-tri-cities-market-report/
-├── 📁 public/
-│   └── favicon.svg               # Custom Tri-Cities favicon
-├── 📁 src/
-│   ├── 📁 components/           # React components
-│   │   ├── HeroSection.tsx      # Animated hero with key metrics
-│   │   ├── Navigation.tsx       # Sticky scroll-spy navigation
-│   │   ├── SectionCard.tsx      # Content cards with TL;DR pills
-│   │   ├── ChartBlock.tsx       # Interactive chart components
-│   │   ├── SWOTQuadrant.tsx     # SWOT analysis visualization
-│   │   ├── GlossaryDrawer.tsx   # Citations & references drawer
-│   │   └── SearchModal.tsx      # Fuzzy search modal
-│   ├── 📁 data/
-│   │   └── report.json          # Structured report data
-│   ├── 📁 types/
-│   │   └── report.ts            # TypeScript interfaces
-│   ├── 📁 utils/
-│   │   └── cn.ts                # Class name utility
-│   ├── App.tsx                  # Main application component
-│   ├── main.tsx                 # React entry point
-│   └── index.css                # Global styles & Tailwind imports
-├── package.json                 # Dependencies & scripts
-├── tailwind.config.js           # Tailwind configuration
-├── vite.config.ts              # Vite configuration
-└── README.md                   # This file
+src/
+├── components/          # React components
+│   ├── Navigation.tsx   # Main navigation
+│   ├── HeroSection.tsx  # Hero section with key metrics
+│   ├── SectionCard.tsx  # Report section cards
+│   ├── ChartBlock.tsx   # Chart components
+│   └── ...
+├── data/               # Report data
+│   └── report.json     # Main report data
+├── types/              # TypeScript type definitions
+└── utils/              # Utility functions
 ```
 
-## 🎨 Design System
+## 🎯 Key Features
 
-### Color Palette
-- **ETSU Navy**: `#1e1b4b` → `#4f46e5` (Primary brand colors)
-- **Boone Lake Teal**: `#042f2e` → `#14b8a6` (Accent colors)
-- **Glass Morphism**: Semi-transparent overlays with backdrop blur
+### Interactive Charts
+- Bar charts for demographic data
+- Line charts for trend analysis  
+- Pie charts for market segmentation
+- Quality of life metrics visualization
 
-### Typography
-- **Font Family**: Inter (Google Fonts)
-- **Headings**: Bold, gradient text effects
-- **Body**: Optimized for readability across devices
+### SWOT Analysis
+- Comprehensive strengths, weaknesses, opportunities, and threats
+- Color-coded quadrants for easy reading
+- Professional business analysis format
 
-### Animations
-- **Hero Counters**: 2-second count-up animations
-- **Page Transitions**: Smooth fade & slide effects
-- **Scroll Animations**: Progressive disclosure as user scrolls
+### Citation System
+- Proper source attribution
+- Tennessee-based data sources
+- Academic-style referencing
 
-## 📊 Data Structure
+## 📱 Responsive Design
 
-The report data is structured in `src/data/report.json`:
+The report is fully responsive and optimized for:
+- Desktop computers (1200px+)
+- Tablets (768px - 1199px)
+- Mobile phones (320px - 767px)
 
-```typescript
-interface ReportData {
-  metadata: {
-    title: string;
-    subtitle: string;
-    date: string;
-    author: string;
-  };
-  keyMetrics: {
-    populationGrowth: number;
-    medianHomePrice: number;
-    // ... other metrics
-  };
-  sections: Section[];
-  citations: Citation[];
-}
-```
+## 🌙 Dark Mode
 
-### Updating Report Data
+Toggle between light and dark themes with the navigation button. Theme preference is saved to localStorage.
 
-1. **Edit the JSON**: Modify `src/data/report.json`
-2. **Add Charts**: Include chart data in section objects
-3. **Update Citations**: Add new references to citations array
-4. **Rebuild**: Run `npm run build` to update the static site
+## 🔍 Search Functionality
 
-## 🚀 Deployment
+Quickly find specific sections or content using the search modal (Ctrl/Cmd + K).
 
-### Automated GitHub Pages Deployment
+## 📈 Data Sources
 
-1. **Update package.json**: Set your GitHub username/repo name
-```json
-{
-  "homepage": "https://yourusername.github.io/tri-cities-market-report"
-}
-```
-
-2. **Deploy with one command**:
-```bash
-npm run deploy
-```
-
-This will:
-- Build the production bundle
-- Create/update the `gh-pages` branch
-- Deploy to GitHub Pages automatically
-
-### Manual Deployment
-
-1. **Build the project**:
-```bash
-npm run build
-```
-
-2. **Deploy the `dist` folder** to any static hosting service (Netlify, Vercel, etc.)
-
-## 🎯 Performance Optimizations
-
-- **Code Splitting**: Vendor, charts, and animation libraries are split into separate chunks
-- **Lazy Loading**: Heavy components load only when needed
-- **Tree Shaking**: Unused code is eliminated from the final bundle
-- **Image Optimization**: SVG icons and optimized assets
-- **Minification**: Terser minification for production builds
-
-## ♿ Accessibility Features
-
-- **WCAG AA Compliance**: High contrast ratios and semantic HTML
-- **Keyboard Navigation**: Full keyboard accessibility
-- **Screen Reader Support**: Proper ARIA labels and landmarks
-- **Reduced Motion**: Respects `prefers-reduced-motion` setting
-- **Focus Management**: Clear focus indicators throughout
-
-## 🔧 Customization
-
-### Adding New Sections
-1. Add section data to `src/data/report.json`
-2. The app will automatically render new sections
-3. Add charts by including `charts` array in section data
-
-### Styling Changes
-1. **Colors**: Update `tailwind.config.js` color palette
-2. **Fonts**: Modify font imports in `src/index.css`
-3. **Animations**: Customize Framer Motion variants in components
-
-### Chart Types
-Support for:
-- **Bar Charts**: Population, employment data
-- **Line Charts**: Trend analysis over time
-- **Pie Charts**: Demographic breakdowns
-- **Custom Components**: SWOT analysis quadrants
-
-## 📈 Lighthouse Scores
-
-Target performance metrics:
-- **Performance**: 90+
-- **Accessibility**: 95+
-- **Best Practices**: 95+
-- **SEO**: 95+
+All data is sourced from legitimate Tennessee organizations:
+- Johnson City Development Authority (thejcda.org)
+- Tennessee Housing Development Agency (thda.org)
+- Northeast Tennessee Economic Development Corporation (netedc.org)
+- City of Johnson City Economic Development
+- MTSU Business Research Center
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+This is a professional market report. For updates or corrections, please contact the BOOTH Research Team.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+© 2025 BOOTH Research Team. All rights reserved.
 
-## 🙏 Acknowledgments
+## 📞 Contact
 
-- **Data Source**: Enhanced Market Research Report for the Tri-Cities Region
-- **Author**: Grok 4 Private Beta, xAI Personal Assistant
-- **Design Inspiration**: Modern data visualization and glass-morphism trends
-- **Regional Focus**: Johnson City, Kingsport, Bristol, Tennessee
+For questions about this report or BOOTH services:
+- Website: [BOOTH Research](https://booth-research.com)
+- Email: research@booth.com
+- Location: Tri-Cities Region, Tennessee
 
 ---
 
-**Built with ❤️ for the Tri-Cities region** | [Live Demo](https://yourusername.github.io/tri-cities-market-report) | [Report Issues](https://github.com/yourusername/tri-cities-market-report/issues) 
+*Built with ❤️ by the BOOTH Research Team* 
