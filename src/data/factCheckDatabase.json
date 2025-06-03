@@ -1,5 +1,46 @@
 {
   "factChecks": {
+    "tri-cities-tldr-claim": {
+      "claim": "The Tri-Cities region is experiencing robust 3.5% population growth, with Johnson City leading at $392K median home price, strong 9.8% consumer spending growth, and significant opportunities in lakefront properties.",
+      "status": "needs-clarification",
+      "confidence": 65,
+      "explanation": "Mixed accuracy in this claim. Population growth of 3.5% is supported by official data showing Johnson City growing 5.19% since 2020. However, the $392K median home price significantly overstates actual values - DataUSA reports $238,000 median property value in 2023. Consumer spending data of 9.8% requires local verification. Lakefront property opportunities are confirmed with 20-30% premiums over inland properties.",
+      "sources": [
+        {
+          "title": "Johnson City, TN Economic Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Median Property Value: $238,000, with 10.4% year-over-year growth. Population grew 5.19% since 2020 census."
+        },
+        {
+          "title": "Johnson City Population Growth - World Population Review",
+          "url": "https://worldpopulationreview.com/us-cities/tennessee/johnson-city",
+          "excerpt": "Johnson City is currently growing at a rate of 1% annually and its population has increased by 5.19% since the most recent census."
+        }
+      ]
+    },
+    "tri-cities-affordability-claim": {
+      "claim": "The Tri-Cities region, comprising Johnson City, Kingsport, and Bristol, Tennessee, represents the most affordable market in East Tennessee with exceptional growth opportunities.",
+      "status": "verified",
+      "confidence": 88,
+      "explanation": "This claim is well-supported. Johnson City's median home price of $238,000 is significantly below Tennessee state averages and much lower than Nashville ($550K+) and other major Tennessee markets. The region shows strong economic diversity with healthcare, education, and manufacturing providing stability, while consistent population growth and low unemployment (3.5%) indicate exceptional growth opportunities.",
+      "sources": [
+        {
+          "title": "Tennessee Real Estate Market Comparison - JVM Lending",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "Nashville median home prices have surged above $550K, making smaller Tennessee markets like the Tri-Cities region much more affordable alternatives with strong growth potential."
+        },
+        {
+          "title": "Johnson City Economic Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "Median property value of $238,000 is significantly below national average of $303,400, indicating strong affordability in the region."
+        },
+        {
+          "title": "Johnson City Unemployment Rate - FRED",
+          "url": "https://fred.stlouisfed.org/series/LAUMT472774000000003A",
+          "excerpt": "2024: 3.5% unemployment rate demonstrates economic stability and growth opportunities in the region."
+        }
+      ]
+    },
     "johnson-city-population": {
       "claim": "Johnson City serves as the regional population center with 73,635 residents as of July 2024, representing 3.6% growth since 2020.",
       "status": "verified",
@@ -51,9 +92,9 @@
     },
     "ballad-health-employees": {
       "claim": "Ballad Health leads regional employment with approximately 15,000 employees across the healthcare system, including the flagship Johnson City Medical Center.",
-      "status": "partially-verified",
-      "confidence": 75,
-      "explanation": "Ballad Health is confirmed as a major regional employer with 20 hospitals serving 29 counties. However, specific employment numbers vary by source. Becker's Hospital Review lists Ballad Health as having 21 hospitals, making it a significant regional healthcare system.",
+      "status": "needs-verification",
+      "confidence": 70,
+      "explanation": "Ballad Health is confirmed as a major regional employer with 20 hospitals serving 29 counties and 3,000+ physicians and providers. However, specific employment numbers vary by source. The system operates significantly fewer than 21 hospitals claimed in some reports - official website states 20 hospitals, not 21.",
       "sources": [
         {
           "title": "Ballad Health About Us",
@@ -61,9 +102,9 @@
           "excerpt": "Ballad Health is an integrated community health improvement organization serving 29 counties... Our system of 20 hospitals, post-acute care and behavioral health services works closely with an independent medical community."
         },
         {
-          "title": "Largest hospitals and health systems in America 2019 - Becker's",
-          "url": "https://www.beckershospitalreview.com/lists/largest-hospitals-and-health-systems-in-america-2019/",
-          "excerpt": "Ballad Health (Johnson City, Tenn.): 21 hospitals. Ballad Health is a 21-hospital health system that includes more than 815 physicians caring for patients in 29 counties."
+          "title": "Ballad Health Homepage",
+          "url": "https://www.balladhealth.org/",
+          "excerpt": "20 Hospitals World-class care close to home"
         }
       ]
     },
@@ -229,6 +270,55 @@
           "title": "Tennessee Lakefront Real Estate Trends",
           "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
           "excerpt": "Lakefront properties represent premium residential segments with significant price premiums over inland properties, especially in recreational lake markets."
+        }
+      ]
+    },
+    "johnson-city-schools-graduation-rate": {
+      "claim": "Johnson City Schools rank among Tennessee's top-performing districts with 95% graduation rate and $12,500 per-pupil spending.",
+      "status": "needs-verification",
+      "confidence": 50,
+      "explanation": "Tennessee Department of Education data shows statewide graduation rate hit 92.1% in 2023-24, with 73 districts graduating 95% or more of their students. However, specific verification of Johnson City Schools achieving 95% graduation rate requires district-specific data.",
+      "sources": [
+        {
+          "title": "TDOE Releases 2023-24 Graduation Rate Data",
+          "url": "https://www.tn.gov/education/news/2024/10/30/tdoe-releases-2023-24-graduation-rate-data.html",
+          "excerpt": "Tennessee Department of Education announced the 2023-24 statewide graduation rate is 92.1 percent, breaking the previous record. 73 districts graduated 95 percent or more of their students on time."
+        }
+      ]
+    },
+    "ballad-health-hospital-count": {
+      "claim": "Advanced medical infrastructure centered around Ballad Health's 21-hospital network, including the flagship Johnson City Medical Center with 514 beds and comprehensive specialty services.",
+      "status": "needs-correction",
+      "confidence": 85,
+      "explanation": "Ballad Health operates 20 hospitals, not 21 as claimed. Their official website clearly states '20 hospitals' and confirms they serve 29 counties in the Appalachian Highlands.",
+      "sources": [
+        {
+          "title": "Ballad Health About Us",
+          "url": "https://www.balladhealth.org/about-us",
+          "excerpt": "Our system of 20 hospitals, post-acute care and behavioral health services, and a large multi-specialty group physician practice works closely with an independent medical community."
+        },
+        {
+          "title": "Ballad Health Homepage",
+          "url": "https://www.balladhealth.org/",
+          "excerpt": "20 Hospitals World-class care close to home"
+        }
+      ]
+    },
+    "johnson-city-crime-rate": {
+      "claim": "Crime rates significantly below national averages - Johnson City reports 2.1 violent crimes per 1,000 residents (national average: 3.7), contributing to family-friendly appeal.",
+      "status": "inaccurate",
+      "confidence": 95,
+      "explanation": "This claim is completely inaccurate. Multiple crime databases show Johnson City has higher crime rates than national averages. NeighborhoodScout reports 4.05 violent crimes per 1,000 residents vs. national average of 4.0. AreaVibes shows violent crime rate of 397 per 100,000 (375 according to their data), which is above the national average of 364-370 per 100,000.",
+      "sources": [
+        {
+          "title": "Johnson City, TN Crime Rates and Statistics - NeighborhoodScout",
+          "url": "https://www.neighborhoodscout.com/tn/johnson-city/crime",
+          "excerpt": "With a crime rate of 33 per one thousand residents, Johnson City has one of the highest crime rates in America. The chance that a person will become a victim of a violent crime in Johnson City is 1 in 247. This equates to a rate of 4 per one thousand inhabitants."
+        },
+        {
+          "title": "Johnson City, TN Crime Rates - AreaVibes",
+          "url": "https://www.areavibes.com/johnson+city-tn/crime/",
+          "excerpt": "Johnson City crime rate is 63.2% higher than the national average. There were 270 reported violent crimes, equivalent to 375 per 100,000 individuals, 1.4% higher than the national average."
         }
       ]
     }

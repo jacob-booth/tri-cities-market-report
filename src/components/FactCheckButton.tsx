@@ -28,48 +28,116 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
   // Map content to fact-check database entries
   const getFactCheckId = (text: string): string | null => {
     const contentMap: Record<string, string> = {
+      // Main TL;DR and key claims
+      'The Tri-Cities region is experiencing robust 3.5% population growth, with Johnson City leading at $392K median home price, strong 9.8% consumer spending growth, and significant opportunities in lakefront properties.': 'tri-cities-tldr-claim',
+      'The Tri-Cities region, comprising Johnson City, Kingsport, and Bristol, Tennessee, represents the most affordable market in East Tennessee with exceptional growth opportunities.': 'tri-cities-affordability-claim',
+      
       // Population data
       'Johnson City serves as the regional population center with 73,635 residents': 'johnson-city-population',
       'Regional population grew by 12,682 people from 2021-2023': 'regional-population-growth',
       'Johnson City leading at 73,635 residents': 'johnson-city-population',
+      'representing 3.6% growth since 2020': 'johnson-city-population',
+      '73,635 residents as of July 2024': 'johnson-city-population',
       
       // Income data
       'Median household income of $55,400 in Johnson City': 'median-household-income',
       'provides strong purchasing power': 'median-household-income',
+      '$55,400 median household income': 'median-household-income',
+      'while below national averages, provides strong purchasing power due to low cost of living': 'median-household-income',
       
       // Age demographics
       "The region's median age of 35.1 years": 'median-age',
       'healthy balance of working professionals': 'median-age',
+      'median age of 35.1 years in Johnson City': 'median-age',
+      '35.1 years indicates a healthy balance': 'median-age',
       
       // Employment data
       'Ballad Health leads regional employment with approximately 15,000 employees': 'ballad-health-employees',
       'Ballad Health (~15,000 employees)': 'ballad-health-employees',
+      '15,000 employees across the healthcare system': 'ballad-health-employees',
+      'Ballad Health': 'ballad-health-employees',
+      'flagship Johnson City Medical Center': 'ballad-health-employees',
+      
       'Eastman Chemical Company in Kingsport employs approximately 7,000 workers': 'eastman-chemical-employees',
+      'Eastman Chemical Company': 'eastman-chemical-employees',
+      '7,000 workers': 'eastman-chemical-employees',
+      'global chemical industry leaders': 'eastman-chemical-employees',
+      
       'The region maintained a remarkably low 3.0% unemployment rate': 'unemployment-rate',
+      'remarkably low': 'unemployment-rate',
+      'unemployment rate': 'unemployment-rate',
+      '3.0% unemployment rate in early 2025': 'unemployment-rate',
+      'consistent job growth averaging 398 new positions per month': 'unemployment-rate',
+      
       'East Tennessee State University contributes over 2,500 direct employees': 'etsu-employees',
       'ETSU': 'etsu-employees',
+      '2,500 direct employees': 'etsu-employees',
+      '15,000+ students and research activities': 'etsu-employees',
+      'significant economic impact through': 'etsu-employees',
       
       // Economic indicators
       'Consumer spending surged 9.8% in 2023': 'consumer-spending-growth',
+      '9.8% consumer spending growth': 'consumer-spending-growth',
+      'Consumer spending increased 9.8%': 'consumer-spending-growth',
+      'nearly double the core inflation rate': 'consumer-spending-growth',
       'strong economic resilience': 'poverty-rate',
       'economic diversity': 'tri-cities-economy',
       'healthcare, education, and manufacturing serving as primary pillars': 'tri-cities-economy',
       'The Tri-Cities economy demonstrates exceptional diversity': 'tri-cities-economy',
+      'primary pillars of stability': 'tri-cities-economy',
+      'diverse economy': 'tri-cities-economy',
       
       // Housing market data
       "Johnson City's median home price reached $392,000": 'home-price-johnson-city',
+      '$392K median home price': 'home-price-johnson-city',
+      'median home price reached $392,000 in 2025': 'home-price-johnson-city',
+      '5.5% year-over-year': 'home-price-johnson-city',
+      'maintaining affordability compared to national markets': 'home-price-johnson-city',
+      
       'remarkable 72% growth from 2018-2024': 'tennessee-housing-market-growth',
+      '72% growth': 'tennessee-housing-market-growth',
+      'consistent appreciation while maintaining accessibility': 'tennessee-housing-market-growth',
+      
       'Nashville': 'nashville-median-home-price',
       'soaring to over $550K': 'nashville-median-home-price',
+      "Nashville's median home price": 'nashville-median-home-price',
+      
       '4-6% annual home price appreciation through 2026': 'tennessee-price-forecast',
       'Conservative projections indicate': 'tennessee-price-forecast',
+      'Price Forecasting': 'tennessee-price-forecast',
       
       // Lakefront properties
       'Boone Lake properties command the highest premiums': 'lakefront-property-premiums',
       '30% above comparable inland homes': 'lakefront-property-premiums',
+      'significant opportunities in lakefront properties': 'lakefront-property-premiums',
+      'Boone Lake': 'lakefront-property-premiums',
+      'lakefront properties': 'lakefront-property-premiums',
+      'premiums at approximately 30%': 'lakefront-property-premiums',
+      
+      // Infrastructure and quality of life
+      'Johnson City Schools rank among Tennessee': 'johnson-city-schools-graduation-rate',
+      '95% graduation rate': 'johnson-city-schools-graduation-rate',
+      '$12,500 per-pupil spending': 'johnson-city-schools-graduation-rate',
+      'top-performing districts': 'johnson-city-schools-graduation-rate',
+      
+      "Ballad Health's 21-hospital network": 'ballad-health-hospital-count',
+      '21-hospital network': 'ballad-health-hospital-count',
+      '21 hospitals': 'ballad-health-hospital-count',
+      'Johnson City Medical Center with 514 beds': 'ballad-health-hospital-count',
+      'comprehensive specialty services': 'ballad-health-hospital-count',
+      
+      'Crime rates significantly below national averages': 'johnson-city-crime-rate',
+      '2.1 violent crimes per 1,000 residents': 'johnson-city-crime-rate',
+      'national average: 3.7': 'johnson-city-crime-rate',
+      'family-friendly appeal': 'johnson-city-crime-rate',
+      'significantly below national averages': 'johnson-city-crime-rate',
       
       // General economic health
-      'economic health': 'poverty-rate'
+      'economic health': 'poverty-rate',
+      'manageable poverty rates': 'poverty-rate',
+      'stable conditions': 'poverty-rate',
+      'most affordable market in East Tennessee': 'tri-cities-affordability-claim',
+      'exceptional growth opportunities': 'tri-cities-affordability-claim'
     };
 
     // Find the best match for the content
