@@ -30,26 +30,46 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
     const contentMap: Record<string, string> = {
       // Population data
       'Johnson City serves as the regional population center with 73,635 residents': 'johnson-city-population',
-      'Regional population grew by 12,682 people from 2021-2023': 'johnson-city-population',
+      'Regional population grew by 12,682 people from 2021-2023': 'regional-population-growth',
+      'Johnson City leading at 73,635 residents': 'johnson-city-population',
       
       // Income data
       'Median household income of $55,400 in Johnson City': 'median-household-income',
+      'provides strong purchasing power': 'median-household-income',
       
       // Age demographics
       "The region's median age of 35.1 years": 'median-age',
+      'healthy balance of working professionals': 'median-age',
       
       // Employment data
       'Ballad Health leads regional employment with approximately 15,000 employees': 'ballad-health-employees',
+      'Ballad Health (~15,000 employees)': 'ballad-health-employees',
       'Eastman Chemical Company in Kingsport employs approximately 7,000 workers': 'eastman-chemical-employees',
       'The region maintained a remarkably low 3.0% unemployment rate': 'unemployment-rate',
       'East Tennessee State University contributes over 2,500 direct employees': 'etsu-employees',
+      'ETSU': 'etsu-employees',
       
       // Economic indicators
       'Consumer spending surged 9.8% in 2023': 'consumer-spending-growth',
+      'strong economic resilience': 'poverty-rate',
+      'economic diversity': 'tri-cities-economy',
+      'healthcare, education, and manufacturing serving as primary pillars': 'tri-cities-economy',
+      'The Tri-Cities economy demonstrates exceptional diversity': 'tri-cities-economy',
+      
+      // Housing market data
       "Johnson City's median home price reached $392,000": 'home-price-johnson-city',
+      'remarkable 72% growth from 2018-2024': 'tennessee-housing-market-growth',
+      'Nashville': 'nashville-median-home-price',
+      'soaring to over $550K': 'nashville-median-home-price',
+      '4-6% annual home price appreciation through 2026': 'tennessee-price-forecast',
+      'Conservative projections indicate': 'tennessee-price-forecast',
+      
+      // Lakefront properties
+      'Boone Lake properties command the highest premiums': 'lakefront-property-premiums',
+      '30% above comparable inland homes': 'lakefront-property-premiums',
       
       // General economic health
-      'strong economic resilience': 'poverty-rate'
+      'economic health': 'poverty-rate'
     };
 
     // Find the best match for the content
