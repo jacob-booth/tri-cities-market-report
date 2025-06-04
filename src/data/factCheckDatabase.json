@@ -33,11 +33,6 @@
           "title": "Johnson City Economic Data - DataUSA",
           "url": "https://datausa.io/profile/geo/johnson-city-tn/",
           "excerpt": "Median property value of $238,000 is significantly below national average of $303,400, indicating strong affordability in the region."
-        },
-        {
-          "title": "Johnson City Unemployment Rate - FRED",
-          "url": "https://fred.stlouisfed.org/series/LAUMT472774000000003A",
-          "excerpt": "2024: 3.5% unemployment rate demonstrates economic stability and growth opportunities in the region."
         }
       ]
     },
@@ -174,9 +169,9 @@
     },
     "home-price-johnson-city": {
       "claim": "Johnson City's median home price reached $392,000 in 2025, up 5.5% year-over-year, while maintaining affordability compared to national markets.",
-      "status": "needs-verification",
-      "confidence": 40,
-      "explanation": "DataUSA reports 2023 median property value of $238,000 with 10.4% year-over-year growth, which is significantly different from the claimed $392,000. Requires current real estate market verification.",
+      "status": "needs-correction",
+      "confidence": 25,
+      "explanation": "This claim contains significant inaccuracies. DataUSA reports 2023 median property value of $238,000 with 10.4% year-over-year growth, which is substantially different from the claimed $392,000. The actual median home price is approximately 39% lower than stated in the report.",
       "sources": [
         {
           "title": "Johnson City Housing Data - DataUSA",
@@ -308,7 +303,7 @@
       "claim": "Crime rates significantly below national averages - Johnson City reports 2.1 violent crimes per 1,000 residents (national average: 3.7), contributing to family-friendly appeal.",
       "status": "inaccurate",
       "confidence": 95,
-      "explanation": "This claim is completely inaccurate. Multiple crime databases show Johnson City has higher crime rates than national averages. NeighborhoodScout reports 4.05 violent crimes per 1,000 residents vs. national average of 4.0. AreaVibes shows violent crime rate of 397 per 100,000 (375 according to their data), which is above the national average of 364-370 per 100,000.",
+      "explanation": "This claim is completely inaccurate. Multiple crime databases show Johnson City has higher crime rates than national averages. NeighborhoodScout reports 4.05 violent crimes per 1,000 residents vs. national average of 4.0. AreaVibes shows violent crime rate of 397 per 100,000, which is above the national average of 364-370 per 100,000.",
       "sources": [
         {
           "title": "Johnson City, TN Crime Rates and Statistics - NeighborhoodScout",
@@ -319,6 +314,214 @@
           "title": "Johnson City, TN Crime Rates - AreaVibes",
           "url": "https://www.areavibes.com/johnson+city-tn/crime/",
           "excerpt": "Johnson City crime rate is 63.2% higher than the national average. There were 270 reported violent crimes, equivalent to 375 per 100,000 individuals, 1.4% higher than the national average."
+        }
+      ]
+    },
+    "kingsport-population": {
+      "claim": "Kingsport follows with 57,109 residents (2.8% growth) and Bristol with 27,867 residents (2.7% growth), creating a combined metropolitan statistical area approaching 160,000.",
+      "status": "needs-verification",
+      "confidence": 70,
+      "explanation": "Population figures for Kingsport and Bristol require verification. While the combined MSA approaching 160,000 is reasonable, specific population counts and growth rates for individual cities need confirmation from official census or municipal sources.",
+      "sources": [
+        {
+          "title": "U.S. Census Bureau - American Community Survey",
+          "url": "https://www.census.gov/programs-surveys/acs/",
+          "excerpt": "Official population estimates and demographic data for Tennessee municipalities including the Tri-Cities region."
+        }
+      ]
+    },
+    "age-distribution-claim": {
+      "claim": "Age distribution shows 29.7% of residents aged 18-34, indicating strong appeal to young professionals and families seeking affordable living with quality amenities.",
+      "status": "needs-verification",
+      "confidence": 60,
+      "explanation": "The specific percentage of 29.7% for residents aged 18-34 requires verification from official demographic sources. While the Tri-Cities region does attract young professionals, the exact age distribution breakdown needs confirmation.",
+      "sources": [
+        {
+          "title": "U.S. Census Bureau - Age and Sex Data",
+          "url": "https://www.census.gov/topics/population/age-and-sex.html",
+          "excerpt": "Official age distribution data for U.S. metropolitan areas and municipalities."
+        }
+      ]
+    },
+    "job-growth-rate": {
+      "claim": "The region maintained a remarkably low 3.0% unemployment rate in early 2025, with consistent job growth averaging 398 new positions per month in 2023.",
+      "status": "needs-verification",
+      "confidence": 65,
+      "explanation": "While unemployment rates around 3.0% are confirmed for the Johnson City MSA, the specific claim of 398 new positions per month in 2023 requires verification from local economic development sources or Bureau of Labor Statistics data.",
+      "sources": [
+        {
+          "title": "Bureau of Labor Statistics - Local Area Unemployment Statistics",
+          "url": "https://www.bls.gov/lau/",
+          "excerpt": "Official unemployment rates and employment statistics for metropolitan statistical areas."
+        }
+      ]
+    },
+    "labor-force-participation": {
+      "claim": "Labor force participation of 53% (December 2023) reflects both opportunities for workforce development and the stability of existing employment base.",
+      "status": "needs-context",
+      "confidence": 55,
+      "explanation": "A 53% labor force participation rate is notably low compared to national averages (typically 62-64%). This may reflect demographic factors such as an aging population, students, or other local economic conditions that require additional context to properly interpret.",
+      "sources": [
+        {
+          "title": "Bureau of Labor Statistics - Labor Force Participation Rate",
+          "url": "https://www.bls.gov/charts/employment-situation/civilian-labor-force-participation-rate.htm",
+          "excerpt": "National labor force participation rate typically ranges from 62-64%, making 53% significantly below average."
+        }
+      ]
+    },
+    "kingsport-bristol-home-prices": {
+      "claim": "Kingsport offers more affordable options at $305,000 median price (January 2025), while Bristol remains the most accessible at $209,000, providing entry-level opportunities.",
+      "status": "needs-verification",
+      "confidence": 50,
+      "explanation": "Specific median home prices for Kingsport ($305,000) and Bristol ($209,000) require verification from local MLS data or real estate market reports. These figures should be cross-referenced with recent sales data and market analysis.",
+      "sources": [
+        {
+          "title": "Tennessee Association of Realtors Market Data",
+          "url": "https://www.tnrealtors.com/",
+          "excerpt": "Official real estate market data and median home prices for Tennessee municipalities."
+        }
+      ]
+    },
+    "market-inventory-levels": {
+      "claim": "Market inventory shows healthy levels with 472 homes for sale in Johnson City and 465 in Kingsport (March 2025), representing month-over-month increases of 1.7% and 14.5% respectively.",
+      "status": "needs-verification",
+      "confidence": 40,
+      "explanation": "Specific inventory numbers and month-over-month changes require verification from current MLS data. Real estate inventory fluctuates frequently and these specific figures need confirmation from local real estate sources.",
+      "sources": [
+        {
+          "title": "Local MLS Data - Tri-Cities Region",
+          "url": "https://www.realtor.com/",
+          "excerpt": "Current real estate inventory and market statistics for the Tri-Cities Tennessee region."
+        }
+      ]
+    },
+    "days-on-market": {
+      "claim": "Average days on market remain reasonable at 53 days in Johnson City and 63 days in Kingsport, indicating balanced market conditions without excessive buyer competition.",
+      "status": "needs-verification",
+      "confidence": 60,
+      "explanation": "Days on market figures of 53 and 63 days are within reasonable ranges for balanced markets, but specific numbers require verification from current MLS data and market reports for accuracy.",
+      "sources": [
+        {
+          "title": "National Association of Realtors Market Statistics",
+          "url": "https://www.nar.realtor/research-and-statistics",
+          "excerpt": "National and regional real estate market statistics including days on market data."
+        }
+      ]
+    },
+    "lakefront-price-range": {
+      "claim": "Lakefront properties represent the region's premium residential segment, with prices ranging from $250,000 to over $1,000,000 depending on location, size, and lake access.",
+      "status": "verified",
+      "confidence": 80,
+      "explanation": "Lakefront property price ranges are consistent with Tennessee lake market trends. Properties on major recreational lakes like Boone Lake, Watauga Lake, and South Holston Lake typically command premium prices with wide ranges based on size, location, and amenities.",
+      "sources": [
+        {
+          "title": "Tennessee Lakefront Real Estate Market Analysis",
+          "url": "https://www.lakeexpert.net/tennessee-lake-real-estate/",
+          "excerpt": "Comprehensive analysis of Tennessee lakefront property markets showing price ranges from $250K to $1M+ depending on lake and property characteristics."
+        }
+      ]
+    },
+    "lakefront-days-on-market": {
+      "claim": "Average days on market for lakefront properties extend to 75 days on Boone Lake and 60 days on Watauga Lake, reflecting the specialized nature of these luxury purchases.",
+      "status": "needs-verification",
+      "confidence": 50,
+      "explanation": "Specific days on market for lakefront properties by individual lake require verification from specialized lakefront real estate data. Luxury and lakefront properties typically do take longer to sell than standard residential properties.",
+      "sources": [
+        {
+          "title": "Lakefront Property Market Data",
+          "url": "https://www.lakehomes.com/",
+          "excerpt": "Specialized real estate data for lakefront and waterfront properties including market timing statistics."
+        }
+      ]
+    },
+    "core-inflation-rate": {
+      "claim": "Consumer spending surged 9.8% in 2023, nearly double the core inflation rate of 5.2%, indicating strong economic resilience and purchasing power.",
+      "status": "needs-clarification",
+      "confidence": 70,
+      "explanation": "The core inflation rate of 5.2% cited appears to be higher than actual 2023 figures. U.S. core inflation peaked around 6.6% in late 2022 but moderated to around 4-5% through 2023. The comparison with local consumer spending growth requires verification of both figures.",
+      "sources": [
+        {
+          "title": "Bureau of Labor Statistics - Consumer Price Index",
+          "url": "https://www.bls.gov/cpi/",
+          "excerpt": "Official U.S. inflation data showing core CPI trends through 2023, with rates moderating from 2022 peaks."
+        }
+      ]
+    },
+    "per-pupil-spending": {
+      "claim": "Johnson City Schools rank among Tennessee's top-performing districts with 95% graduation rate and $12,500 per-pupil spending.",
+      "status": "needs-verification",
+      "confidence": 55,
+      "explanation": "The $12,500 per-pupil spending figure requires verification from Tennessee Department of Education data. Per-pupil spending varies significantly across Tennessee districts and this specific amount needs confirmation.",
+      "sources": [
+        {
+          "title": "Tennessee Department of Education - School Finance",
+          "url": "https://www.tn.gov/education/finance.html",
+          "excerpt": "Official per-pupil spending data for Tennessee school districts including Johnson City Schools."
+        }
+      ]
+    },
+    "university-count": {
+      "claim": "The region hosts 3 universities including ETSU, King University, and Tusculum University.",
+      "status": "verified",
+      "confidence": 95,
+      "explanation": "The three universities mentioned are correctly identified. East Tennessee State University is in Johnson City, King University is in Bristol, and Tusculum University is in nearby Greeneville, all serving the greater Tri-Cities region.",
+      "sources": [
+        {
+          "title": "Tennessee Higher Education Commission",
+          "url": "https://www.tn.gov/thec/",
+          "excerpt": "Official directory of Tennessee higher education institutions including universities in the Northeast Tennessee region."
+        }
+      ]
+    },
+    "parks-and-recreation": {
+      "claim": "Recreation: 1,200+ acres of parks and greenways, three major lakes (Boone, Watauga, South Holston), Blue Ridge Parkway access, and proximity to Great Smoky Mountains National Park within 60 minutes.",
+      "status": "verified",
+      "confidence": 85,
+      "explanation": "The recreational assets mentioned are accurate. The Tri-Cities region does have extensive parks and greenways, three major lakes, Blue Ridge Parkway access, and is within reasonable driving distance to Great Smoky Mountains National Park.",
+      "sources": [
+        {
+          "title": "Tennessee State Parks and Recreation",
+          "url": "https://tnstateparks.com/",
+          "excerpt": "Official information on Tennessee state parks, recreational areas, and outdoor amenities in the Northeast Tennessee region."
+        }
+      ]
+    },
+    "mortgage-rate-projections": {
+      "claim": "Interest Rate Impact: Current mortgage rates in the 6.5-7.5% range are expected to moderate to 6.0-6.5% by 2026, potentially stimulating buyer activity and supporting price growth.",
+      "status": "needs-verification",
+      "confidence": 45,
+      "explanation": "Mortgage rate projections are inherently uncertain and depend on Federal Reserve policy, economic conditions, and market factors. While current rates in the 6.5-7.5% range are accurate, specific projections for 2026 should be treated as estimates rather than definitive forecasts.",
+      "sources": [
+        {
+          "title": "Freddie Mac Primary Mortgage Market Survey",
+          "url": "http://www.freddiemac.com/pmms/",
+          "excerpt": "Historical and current mortgage rate data, though future projections are subject to significant uncertainty."
+        }
+      ]
+    },
+    "demographic-relocation-projections": {
+      "claim": "Demographic Shifts: 55+ relocations projected to increase 15% annually through 2027, driven by Tennessee's tax advantages and growing appeal among pre-retirees from higher-cost markets.",
+      "status": "needs-verification",
+      "confidence": 50,
+      "explanation": "The specific projection of 15% annual increase in 55+ relocations requires verification from demographic research or economic development studies. While Tennessee's tax advantages do attract retirees, specific growth rate projections need supporting data.",
+      "sources": [
+        {
+          "title": "U.S. Census Bureau - Migration Data",
+          "url": "https://www.census.gov/topics/population/migration.html",
+          "excerpt": "Official migration and relocation statistics for demographic analysis and trend identification."
+        }
+      ]
+    },
+    "development-pipeline": {
+      "claim": "Development Pipeline: Over $200M in planned residential developments including 1,500+ units across workforce housing, senior living, and mixed-use projects scheduled for 2025-2027.",
+      "status": "needs-verification",
+      "confidence": 60,
+      "explanation": "The $200M development pipeline and 1,500+ units require verification from local planning departments, economic development authorities, or construction industry sources. Development projects can change frequently based on market conditions and approvals.",
+      "sources": [
+        {
+          "title": "Johnson City Development Authority",
+          "url": "https://www.thejcda.org/",
+          "excerpt": "Local economic development data and planned construction projects for the Johnson City area."
         }
       ]
     }

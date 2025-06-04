@@ -9,7 +9,7 @@ interface FactCheckButtonProps {
 }
 
 interface FactCheckResult {
-  status: 'verified' | 'partially-verified' | 'needs-verification' | 'needs-context' | 'needs-clarification' | 'unverified';
+  status: 'verified' | 'partially-verified' | 'needs-verification' | 'needs-context' | 'needs-clarification' | 'needs-correction' | 'inaccurate' | 'unverified';
   confidence: number;
   explanation: string;
   sources: Array<{
@@ -19,135 +19,89 @@ interface FactCheckResult {
   }>;
 }
 
+// Improved content mapping system with more precise matching
+const CONTENT_FACT_CHECK_MAP: Array<{
+  keywords: string[];
+  factCheckId: string;
+  priority: number; // Higher priority = more specific match
+}> = [
+  // High priority - very specific claims
+  { keywords: ['$392,000', '$392K', 'median home price reached $392'], factCheckId: 'home-price-johnson-city', priority: 10 },
+  { keywords: ['2.1 violent crimes per 1,000', 'Crime rates significantly below'], factCheckId: 'johnson-city-crime-rate', priority: 10 },
+  { keywords: ['21-hospital network', '21 hospitals'], factCheckId: 'ballad-health-hospital-count', priority: 10 },
+  { keywords: ['95% graduation rate'], factCheckId: 'johnson-city-schools-graduation-rate', priority: 10 },
+  { keywords: ['9.8% consumer spending', 'Consumer spending surged 9.8%'], factCheckId: 'consumer-spending-growth', priority: 10 },
+  { keywords: ['$12,500 per-pupil spending'], factCheckId: 'per-pupil-spending', priority: 10 },
+  { keywords: ['5.2%', 'core inflation rate'], factCheckId: 'core-inflation-rate', priority: 10 },
+  
+  // Medium priority - specific data points
+  { keywords: ['73,635 residents', '3.6% growth since 2020'], factCheckId: 'johnson-city-population', priority: 8 },
+  { keywords: ['57,109 residents', 'Kingsport follows', '27,867 residents'], factCheckId: 'kingsport-population', priority: 8 },
+  { keywords: ['29.7% of residents aged 18-34'], factCheckId: 'age-distribution-claim', priority: 8 },
+  { keywords: ['median age of 35.1', '35.1 years'], factCheckId: 'median-age', priority: 8 },
+  { keywords: ['$55,400', 'Median household income'], factCheckId: 'median-household-income', priority: 8 },
+  { keywords: ['3.0% unemployment', 'remarkably low unemployment'], factCheckId: 'unemployment-rate', priority: 8 },
+  { keywords: ['398 new positions per month'], factCheckId: 'job-growth-rate', priority: 8 },
+  { keywords: ['53%', 'Labor force participation'], factCheckId: 'labor-force-participation', priority: 8 },
+  { keywords: ['15,000 employees', 'Ballad Health leads'], factCheckId: 'ballad-health-employees', priority: 8 },
+  { keywords: ['7,000 workers', 'Eastman Chemical'], factCheckId: 'eastman-chemical-employees', priority: 8 },
+  { keywords: ['2,500 direct employees', 'East Tennessee State University'], factCheckId: 'etsu-employees', priority: 8 },
+  { keywords: ['$305,000 median price', '$209,000', 'Bristol remains'], factCheckId: 'kingsport-bristol-home-prices', priority: 8 },
+  { keywords: ['472 homes for sale', '465 in Kingsport'], factCheckId: 'market-inventory-levels', priority: 8 },
+  { keywords: ['53 days in Johnson City', '63 days in Kingsport'], factCheckId: 'days-on-market', priority: 8 },
+  { keywords: ['$250,000 to over $1,000,000'], factCheckId: 'lakefront-price-range', priority: 8 },
+  { keywords: ['75 days on Boone Lake', '60 days on Watauga Lake'], factCheckId: 'lakefront-days-on-market', priority: 8 },
+  { keywords: ['30% above comparable inland', 'Boone Lake properties'], factCheckId: 'lakefront-property-premiums', priority: 8 },
+  { keywords: ['72% growth from 2018-2024'], factCheckId: 'tennessee-housing-market-growth', priority: 8 },
+  { keywords: ['4-6% annual home price appreciation'], factCheckId: 'tennessee-price-forecast', priority: 8 },
+  { keywords: ['6.5-7.5% range', '6.0-6.5% by 2026'], factCheckId: 'mortgage-rate-projections', priority: 8 },
+  { keywords: ['15% annually through 2027', '55+ relocations'], factCheckId: 'demographic-relocation-projections', priority: 8 },
+  { keywords: ['$200M in planned', '1,500+ units'], factCheckId: 'development-pipeline', priority: 8 },
+  { keywords: ['3 universities', 'ETSU, King University, and Tusculum'], factCheckId: 'university-count', priority: 8 },
+  { keywords: ['1,200+ acres of parks', 'three major lakes'], factCheckId: 'parks-and-recreation', priority: 8 },
+  { keywords: ['Nashville', '$550K', 'soaring'], factCheckId: 'nashville-median-home-price', priority: 8 },
+  
+  // Lower priority - general claims
+  { keywords: ['most affordable market in East Tennessee'], factCheckId: 'tri-cities-affordability-claim', priority: 6 },
+  { keywords: ['robust 3.5% population growth'], factCheckId: 'tri-cities-tldr-claim', priority: 6 },
+  { keywords: ['economic diversity', 'healthcare, education, and manufacturing'], factCheckId: 'tri-cities-economy', priority: 6 },
+  { keywords: ['12,682 people from 2021-2023'], factCheckId: 'regional-population-growth', priority: 6 },
+  { keywords: ['poverty rates', 'economic health'], factCheckId: 'poverty-rate', priority: 6 }
+];
+
 const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 0 }) => {
   const [isChecking, setIsChecking] = useState(false);
   const [result, setResult] = useState<FactCheckResult | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [animatedText, setAnimatedText] = useState('');
 
-  // Map content to fact-check database entries
+  // Improved content matching algorithm
   const getFactCheckId = (text: string): string | null => {
-    const contentMap: Record<string, string> = {
-      // Main TL;DR and key claims
-      'The Tri-Cities region is experiencing robust 3.5% population growth, with Johnson City leading at $392K median home price, strong 9.8% consumer spending growth, and significant opportunities in lakefront properties.': 'tri-cities-tldr-claim',
-      'The Tri-Cities region, comprising Johnson City, Kingsport, and Bristol, Tennessee, represents the most affordable market in East Tennessee with exceptional growth opportunities.': 'tri-cities-affordability-claim',
+    let bestMatch: { id: string; score: number } | null = null;
+    
+    for (const mapping of CONTENT_FACT_CHECK_MAP) {
+      let matchScore = 0;
+      let keywordMatches = 0;
       
-      // Population data
-      'Johnson City serves as the regional population center with 73,635 residents': 'johnson-city-population',
-      'Regional population grew by 12,682 people from 2021-2023': 'regional-population-growth',
-      'Johnson City leading at 73,635 residents': 'johnson-city-population',
-      'representing 3.6% growth since 2020': 'johnson-city-population',
-      '73,635 residents as of July 2024': 'johnson-city-population',
+      for (const keyword of mapping.keywords) {
+        if (text.toLowerCase().includes(keyword.toLowerCase())) {
+          keywordMatches++;
+          matchScore += mapping.priority;
+        }
+      }
       
-      // Income data
-      'Median household income of $55,400 in Johnson City': 'median-household-income',
-      'provides strong purchasing power': 'median-household-income',
-      '$55,400 median household income': 'median-household-income',
-      'while below national averages, provides strong purchasing power due to low cost of living': 'median-household-income',
-      
-      // Age demographics
-      "The region's median age of 35.1 years": 'median-age',
-      'healthy balance of working professionals': 'median-age',
-      'median age of 35.1 years in Johnson City': 'median-age',
-      '35.1 years indicates a healthy balance': 'median-age',
-      
-      // Employment data
-      'Ballad Health leads regional employment with approximately 15,000 employees': 'ballad-health-employees',
-      'Ballad Health (~15,000 employees)': 'ballad-health-employees',
-      '15,000 employees across the healthcare system': 'ballad-health-employees',
-      'Ballad Health': 'ballad-health-employees',
-      'flagship Johnson City Medical Center': 'ballad-health-employees',
-      
-      'Eastman Chemical Company in Kingsport employs approximately 7,000 workers': 'eastman-chemical-employees',
-      'Eastman Chemical Company': 'eastman-chemical-employees',
-      '7,000 workers': 'eastman-chemical-employees',
-      'global chemical industry leaders': 'eastman-chemical-employees',
-      
-      'The region maintained a remarkably low 3.0% unemployment rate': 'unemployment-rate',
-      'remarkably low': 'unemployment-rate',
-      'unemployment rate': 'unemployment-rate',
-      '3.0% unemployment rate in early 2025': 'unemployment-rate',
-      'consistent job growth averaging 398 new positions per month': 'unemployment-rate',
-      
-      'East Tennessee State University contributes over 2,500 direct employees': 'etsu-employees',
-      'ETSU': 'etsu-employees',
-      '2,500 direct employees': 'etsu-employees',
-      '15,000+ students and research activities': 'etsu-employees',
-      'significant economic impact through': 'etsu-employees',
-      
-      // Economic indicators
-      'Consumer spending surged 9.8% in 2023': 'consumer-spending-growth',
-      '9.8% consumer spending growth': 'consumer-spending-growth',
-      'Consumer spending increased 9.8%': 'consumer-spending-growth',
-      'nearly double the core inflation rate': 'consumer-spending-growth',
-      'strong economic resilience': 'poverty-rate',
-      'economic diversity': 'tri-cities-economy',
-      'healthcare, education, and manufacturing serving as primary pillars': 'tri-cities-economy',
-      'The Tri-Cities economy demonstrates exceptional diversity': 'tri-cities-economy',
-      'primary pillars of stability': 'tri-cities-economy',
-      'diverse economy': 'tri-cities-economy',
-      
-      // Housing market data
-      "Johnson City's median home price reached $392,000": 'home-price-johnson-city',
-      '$392K median home price': 'home-price-johnson-city',
-      'median home price reached $392,000 in 2025': 'home-price-johnson-city',
-      '5.5% year-over-year': 'home-price-johnson-city',
-      'maintaining affordability compared to national markets': 'home-price-johnson-city',
-      
-      'remarkable 72% growth from 2018-2024': 'tennessee-housing-market-growth',
-      '72% growth': 'tennessee-housing-market-growth',
-      'consistent appreciation while maintaining accessibility': 'tennessee-housing-market-growth',
-      
-      'Nashville': 'nashville-median-home-price',
-      'soaring to over $550K': 'nashville-median-home-price',
-      "Nashville's median home price": 'nashville-median-home-price',
-      
-      '4-6% annual home price appreciation through 2026': 'tennessee-price-forecast',
-      'Conservative projections indicate': 'tennessee-price-forecast',
-      'Price Forecasting': 'tennessee-price-forecast',
-      
-      // Lakefront properties
-      'Boone Lake properties command the highest premiums': 'lakefront-property-premiums',
-      '30% above comparable inland homes': 'lakefront-property-premiums',
-      'significant opportunities in lakefront properties': 'lakefront-property-premiums',
-      'Boone Lake': 'lakefront-property-premiums',
-      'lakefront properties': 'lakefront-property-premiums',
-      'premiums at approximately 30%': 'lakefront-property-premiums',
-      
-      // Infrastructure and quality of life
-      'Johnson City Schools rank among Tennessee': 'johnson-city-schools-graduation-rate',
-      '95% graduation rate': 'johnson-city-schools-graduation-rate',
-      '$12,500 per-pupil spending': 'johnson-city-schools-graduation-rate',
-      'top-performing districts': 'johnson-city-schools-graduation-rate',
-      
-      "Ballad Health's 21-hospital network": 'ballad-health-hospital-count',
-      '21-hospital network': 'ballad-health-hospital-count',
-      '21 hospitals': 'ballad-health-hospital-count',
-      'Johnson City Medical Center with 514 beds': 'ballad-health-hospital-count',
-      'comprehensive specialty services': 'ballad-health-hospital-count',
-      
-      'Crime rates significantly below national averages': 'johnson-city-crime-rate',
-      '2.1 violent crimes per 1,000 residents': 'johnson-city-crime-rate',
-      'national average: 3.7': 'johnson-city-crime-rate',
-      'family-friendly appeal': 'johnson-city-crime-rate',
-      'significantly below national averages': 'johnson-city-crime-rate',
-      
-      // General economic health
-      'economic health': 'poverty-rate',
-      'manageable poverty rates': 'poverty-rate',
-      'stable conditions': 'poverty-rate',
-      'most affordable market in East Tennessee': 'tri-cities-affordability-claim',
-      'exceptional growth opportunities': 'tri-cities-affordability-claim'
-    };
-
-    // Find the best match for the content
-    for (const [key, id] of Object.entries(contentMap)) {
-      if (text.includes(key)) {
-        return id;
+      // Only consider it a match if at least one keyword matches
+      if (keywordMatches > 0) {
+        // Bonus for multiple keyword matches
+        matchScore += (keywordMatches - 1) * 2;
+        
+        if (!bestMatch || matchScore > bestMatch.score) {
+          bestMatch = { id: mapping.factCheckId, score: matchScore };
+        }
       }
     }
     
-    return null;
+    return bestMatch?.id || null;
   };
 
   const getFactCheckResult = (text: string): FactCheckResult | null => {
@@ -218,25 +172,31 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
       case 'needs-context':
       case 'needs-clarification':
         return <AlertTriangle className="w-5 h-5 text-orange-500" />;
-      default:
+      case 'needs-correction':
+      case 'inaccurate':
         return <AlertTriangle className="w-5 h-5 text-red-500" />;
+      default:
+        return <AlertTriangle className="w-5 h-5 text-gray-500" />;
     }
   };
 
   const getStatusColor = () => {
-    if (!result) return 'bg-gray-100';
+    if (!result) return '';
     
     switch (result.status) {
       case 'verified':
-        return 'bg-green-50 border-green-200';
+        return 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700';
       case 'partially-verified':
-        return 'bg-yellow-50 border-yellow-200';
+        return 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700';
       case 'needs-verification':
       case 'needs-context':
       case 'needs-clarification':
-        return 'bg-orange-50 border-orange-200';
+        return 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-700';
+      case 'needs-correction':
+      case 'inaccurate':
+        return 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700';
       default:
-        return 'bg-red-50 border-red-200';
+        return 'bg-gray-50 dark:bg-gray-900/20 border-gray-200 dark:border-gray-700';
     }
   };
 
@@ -254,6 +214,10 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
         return 'Needs Context';
       case 'needs-clarification':
         return 'Needs Clarification';
+      case 'needs-correction':
+        return 'Needs Correction';
+      case 'inaccurate':
+        return 'Inaccurate';
       default:
         return 'Unverified';
     }
@@ -316,6 +280,7 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
                             className={`h-full rounded-full ${
                               result.confidence >= 80 ? 'bg-green-500' :
                               result.confidence >= 60 ? 'bg-yellow-500' :
+                              result.confidence >= 40 ? 'bg-orange-500' :
                               'bg-red-500'
                             }`}
                           />
@@ -338,44 +303,48 @@ const FactCheckButton: React.FC<FactCheckButtonProps> = ({ content, itemIndex = 
 
               {/* Explanation */}
               <div className="mb-6">
-                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   Analysis
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <div className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed min-h-[60px]">
                   {animatedText}
-                  <span className="animate-pulse">|</span>
-                </p>
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="inline-block w-0.5 h-4 bg-gray-400 ml-1"
+                  />
+                </div>
               </div>
 
               {/* Sources */}
               {result.sources && result.sources.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                    Sources
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                    Sources ({result.sources.length})
                   </h4>
                   <div className="space-y-3">
                     {result.sources.map((source, index) => (
                       <motion.div
                         key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 * index }}
-                        className="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-600"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 + 1 }}
+                        className="p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="flex-1">
-                            <h5 className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">
+                            <h5 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
                               {source.title}
                             </h5>
-                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
-                              "{source.excerpt}"
+                            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {source.excerpt}
                             </p>
                           </div>
                           <a
                             href={source.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-shrink-0 p-1 text-primary-600 hover:text-primary-700 transition-colors"
+                            className="flex-shrink-0 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                           >
                             <ExternalLink className="w-4 h-4" />
                           </a>

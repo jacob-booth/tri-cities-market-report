@@ -10,6 +10,32 @@ interface SectionCardProps {
   onCitationClick: (citationId: number) => void;
 }
 
+// Helper function to determine if content should have a fact-check button
+const shouldShowFactCheck = (content: string): boolean => {
+  // Keywords that indicate factual claims that should be fact-checked
+  const factualKeywords = [
+    // Numbers and statistics
+    /\d+%/, // Any percentage
+    /\$[\d,]+/, // Dollar amounts
+    /\d+,\d+/, // Large numbers with commas
+    /\d+\.\d+%/, // Decimal percentages
+    
+    // Specific claims
+    'median', 'average', 'unemployment rate', 'population', 'growth',
+    'employees', 'graduation rate', 'crime rate', 'hospital', 'network',
+    'spending', 'income', 'age', 'premiums', 'appreciation', 'forecast'
+  ];
+  
+  // Check if content contains factual claims
+  return factualKeywords.some(keyword => {
+    if (typeof keyword === 'string') {
+      return content.toLowerCase().includes(keyword.toLowerCase());
+    } else {
+      return keyword.test(content);
+    }
+  });
+};
+
 const SectionCard: React.FC<SectionCardProps> = ({
   section,
 }) => {
@@ -55,23 +81,8 @@ const SectionCard: React.FC<SectionCardProps> = ({
           <p className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed mb-4">
             {section.content[0]}
           </p>
-          {/* Only show fact check for main content that has verified data */}
-          {(section.content[0].includes('Johnson City serves as the regional population center') ||
-            section.content[0].includes('Median household income') ||
-            section.content[0].includes('median age of 35.1') ||
-            section.content[0].includes('Ballad Health') ||
-            section.content[0].includes('unemployment rate') ||
-            section.content[0].includes('Consumer spending') ||
-            section.content[0].includes('median home price') ||
-            section.content[0].includes('72% growth from 2018-2024') ||
-            section.content[0].includes('Nashville') ||
-            section.content[0].includes('4-6% annual home price appreciation') ||
-            section.content[0].includes('Boone Lake properties') ||
-            section.content[0].includes('The Tri-Cities region is experiencing robust') ||
-            section.content[0].includes('most affordable market in East Tennessee') ||
-            section.content[0].includes('Crime rates significantly below') ||
-            section.content[0].includes('95% graduation rate') ||
-            section.content[0].includes('21-hospital network')) && (
+          {/* Show fact check for content with factual claims */}
+          {shouldShowFactCheck(section.content[0]) && (
             <div className="flex justify-end mb-4">
               <FactCheckButton content={section.content[0]} itemIndex={0} />
             </div>
@@ -113,29 +124,8 @@ const SectionCard: React.FC<SectionCardProps> = ({
                   <p className="text-gray-800 dark:text-gray-200 font-poppins leading-relaxed">
                     {paragraph}
                   </p>
-                  {/* Only show fact check for paragraphs with verified data */}
-                  {(paragraph.includes('Johnson City serves as the regional population center') ||
-                    paragraph.includes('Median household income') ||
-                    paragraph.includes('median age of 35.1') ||
-                    paragraph.includes('Ballad Health') ||
-                    paragraph.includes('unemployment rate') ||
-                    paragraph.includes('Consumer spending') ||
-                    paragraph.includes('median home price') ||
-                    paragraph.includes('72% growth from 2018-2024') ||
-                    paragraph.includes('Nashville') ||
-                    paragraph.includes('4-6% annual home price appreciation') ||
-                    paragraph.includes('Boone Lake properties') ||
-                    paragraph.includes('East Tennessee State University') ||
-                    paragraph.includes('Eastman Chemical Company') ||
-                    paragraph.includes('The Tri-Cities region') ||
-                    paragraph.includes('most affordable market') ||
-                    paragraph.includes('Crime rates significantly') ||
-                    paragraph.includes('95% graduation') ||
-                    paragraph.includes('21-hospital') ||
-                    paragraph.includes('Regional population grew') ||
-                    paragraph.includes('economic diversity') ||
-                    paragraph.includes('Price Forecasting') ||
-                    paragraph.includes('Conservative projections')) && (
+                  {/* Show fact check for paragraphs with factual claims */}
+                  {shouldShowFactCheck(paragraph) && (
                     <div className="flex justify-end mt-2 mb-4">
                       <FactCheckButton content={paragraph} itemIndex={index + 1} />
                     </div>
