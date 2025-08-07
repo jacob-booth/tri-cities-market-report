@@ -176,7 +176,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ for the Tri-Cities real estate community**
 
-*Last updated: January 2025 | Version 2.1.0*
+*Last updated: January 2025 | Version 2.1.1*
 
 # Tri-Cities Tennessee Real Estate Market Research Report | Comprehensive Market Analysis & Data Visualization
 
