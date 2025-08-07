@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, DollarSign, Home, ShoppingCart } from 'lucide-react';
+import LiveStatusIndicator from './LiveStatusIndicator';
+import RealTimeMetrics from './RealTimeMetrics';
+import SystemHealthMonitor from './SystemHealthMonitor';
 
 interface HeroSectionProps {
   data: {
@@ -98,154 +101,113 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-32 h-32 rounded-full bg-white/10 backdrop-blur-sm"
+            className="absolute w-2 h-2 bg-white/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
             animate={{
-              x: [0, 100, 0],
               y: [0, -100, 0],
-              scale: [1, 1.2, 1],
+              opacity: [0, 1, 0],
             }}
             transition={{
-              duration: 8 + i * 2,
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 1.5,
-            }}
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${10 + i * 12}%`,
+              delay: Math.random() * 2,
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 text-center text-white">
-        {/* BOOTH Brand Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <img 
-              src="./booth-logo.png" 
-              alt="BOOTH" 
-              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
-            />
-            <h1 className="font-cinzel text-6xl lg:text-8xl font-bold text-white drop-shadow-2xl">
-              BOOTH
-            </h1>
-          </div>
-          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6" />
-          <p className="text-xl lg:text-2xl font-poppins text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive Market Research & Analysis
-          </p>
-        </motion.div>
-
-        {/* Main Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          className="mb-12"
-        >
-          <h2 className="font-cinzel text-3xl lg:text-4xl xl:text-5xl font-semibold text-white mb-6 leading-tight">
-            Tri-Cities Residential Real Estate Market
-          </h2>
-          <p className="text-lg lg:text-xl font-poppins text-white/80 max-w-4xl mx-auto leading-relaxed">
-            Johnson City • Kingsport • Bristol, Tennessee
-          </p>
-        </motion.div>
-
-        {/* Key Metrics Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto"
-        >
-          {metrics.map((metric, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: 0.8 + index * 0.1,
-                ease: "easeOut"
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.2 }
-              }}
-              className="metric-card bg-white/20 backdrop-blur-lg border-white/30 hover:bg-white/30 text-white"
-            >
-              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${metric.bgColor} mb-4 text-navy-700`}>
-                <metric.icon className="w-8 h-8" />
-              </div>
-              
-              <div className="text-3xl lg:text-4xl font-cinzel font-bold mb-2 text-white">
-                <CountUpAnimation
-                  end={metric.value}
-                  prefix={metric.prefix}
-                  suffix={metric.suffix}
-                  duration={2500 + index * 200}
-                />
-              </div>
-              
-              <p className="text-sm lg:text-base font-poppins text-white/80 font-medium">
-                {metric.label}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-          className="mt-16"
-        >
-          <p className="text-lg font-poppins text-white/70 mb-8 max-w-2xl mx-auto">
-            Explore comprehensive insights into Tennessee's most affordable and rapidly growing market
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
-              onClick={() => document.getElementById('executive-summary')?.scrollIntoView({ behavior: 'smooth' })}
-              className="booth-button bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 hover:border-white/50"
-            >
-              Explore Report
-            </button>
-            
-            <button 
-              onClick={() => document.getElementById('swot-analysis')?.scrollIntoView({ behavior: 'smooth' })}
-              className="booth-button-outline border-white/50 text-white hover:bg-white hover:text-navy-900"
-            >
-              View Analysis
-            </button>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-cinzel font-bold text-white mb-6"
           >
-            <motion.div
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-3 bg-white/70 rounded-full mt-2"
-            />
+            Tri-Cities
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
+              Market Report
+            </span>
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl text-white/90 font-poppins max-w-4xl mx-auto mb-8"
+          >
+            Comprehensive real-time analysis of Johnson City, Kingsport, and Bristol real estate markets
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-4 mb-12"
+          >
+            {metrics.map((metric, index) => (
+              <motion.div
+                key={metric.label}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+              >
+                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${metric.bgColor} flex items-center justify-center mb-3 mx-auto`}>
+                  <metric.icon className={`w-6 h-6 text-gradient-to-br ${metric.color}`} />
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white mb-1">
+                    <CountUpAnimation
+                      end={metric.value}
+                      prefix={metric.prefix || ''}
+                      suffix={metric.suffix || ''}
+                    />
+                  </div>
+                  <div className="text-sm text-white/70 font-poppins">
+                    {metric.label}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
+        </div>
+
+        {/* Live Status Dashboard */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16"
+        >
+          <LiveStatusIndicator />
+          <RealTimeMetrics />
+          <SystemHealthMonitor />
+        </motion.div>
+
+        {/* Professional Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/70"
+        >
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span>Real-time Data</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+            <span>Live Monitoring</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span>Professional Grade</span>
+          </div>
         </motion.div>
       </div>
     </section>
