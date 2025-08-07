@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Moon, Sun, FileText } from 'lucide-react';
-import type { Section } from '../types/report';
+import { useTheme } from '../store/useAppStore';
+import type { Section } from '../utils/validateReport';
 
 interface NavigationProps {
   sections: Section[];
@@ -9,8 +10,6 @@ interface NavigationProps {
   onNavigate: (sectionId: string) => void;
   onSearchClick: () => void;
   onGlossaryClick: () => void;
-  darkMode: boolean;
-  onDarkModeToggle: () => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({
@@ -19,9 +18,8 @@ const Navigation: React.FC<NavigationProps> = ({
   onNavigate,
   onSearchClick,
   onGlossaryClick,
-  darkMode,
-  onDarkModeToggle,
 }) => {
+  const { darkMode, toggleDarkMode } = useTheme();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -100,66 +98,64 @@ const Navigation: React.FC<NavigationProps> = ({
                       className="w-8 h-8 object-contain"
                     />
                   </div>
-                  <span className="font-cinzel text-xl font-semibold text-booth-gradient hidden sm:block">
+                  <span className="font-cinzel text-xl font-semibold text-booth-gradient">
                     BOOTH
                   </span>
                 </motion.div>
-              </div>
 
-              {/* Section Navigation */}
-              <div className="hidden lg:flex items-center space-x-1 max-w-2xl overflow-x-auto">
-                {sections.map((section) => (
-                  <motion.button
-                    key={section.id}
-                    onClick={() => handleNavClick(section.id)}
-                    className={`navigation-item px-3 py-2 rounded-lg text-sm whitespace-nowrap ${
-                      activeSection === section.id ? 'active' : ''
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {section.title}
-                  </motion.button>
-                ))}
+                {/* Navigation Links */}
+                <div className="hidden md:flex items-center space-x-6">
+                  {sections.map((section) => (
+                    <motion.button
+                      key={section.id}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => handleNavClick(section.id)}
+                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        activeSection === section.id
+                          ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                          : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
+                      }`}
+                    >
+                      {section.title}
+                    </motion.button>
+                  ))}
+                </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center space-x-2">
-                {/* Search */}
+              <div className="flex items-center space-x-3">
+                {/* Search Button */}
                 <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={onSearchClick}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-lg glass-effect hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
-                  title="Search Report"
+                  className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                  aria-label="Search report content"
                 >
-                  <Search className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                  <Search className="w-5 h-5" />
                 </motion.button>
 
-                {/* Glossary */}
+                {/* Glossary Button */}
                 <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={onGlossaryClick}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-lg glass-effect hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-colors"
-                  title="Citations & References"
+                  className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                  aria-label="Open glossary and citations"
                 >
-                  <FileText className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                  <FileText className="w-5 h-5" />
                 </motion.button>
 
                 {/* Dark Mode Toggle */}
                 <motion.button
-                  onClick={onDarkModeToggle}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-lg glass-effect hover:bg-accent-50 dark:hover:bg-accent-900/20 transition-colors"
-                  title="Toggle Dark Mode"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={toggleDarkMode}
+                  className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                  aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
                 >
-                  {darkMode ? (
-                    <Sun className="w-5 h-5 text-yellow-500" />
-                  ) : (
-                    <Moon className="w-5 h-5 text-gray-600" />
-                  )}
+                  {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 </motion.button>
               </div>
             </div>
@@ -167,24 +163,40 @@ const Navigation: React.FC<NavigationProps> = ({
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation Menu */}
-      <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
-        <div className="glass-effect rounded-2xl p-4 shadow-booth">
-          <div className="grid grid-cols-3 gap-2 text-xs">
-            {sections.slice(0, 6).map((section) => (
+      {/* Mobile Navigation */}
+      <div className="md:hidden fixed bottom-4 left-4 right-4 z-40">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="glass-effect rounded-2xl px-4 py-3 shadow-booth"
+        >
+          <div className="flex items-center justify-around">
+            {sections.slice(0, 3).map((section) => (
               <motion.button
                 key={section.id}
-                onClick={() => handleNavClick(section.id)}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`navigation-item px-2 py-2 rounded-lg text-center ${
-                  activeSection === section.id ? 'active' : ''
+                onClick={() => handleNavClick(section.id)}
+                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                  activeSection === section.id
+                    ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                    : 'text-gray-600 dark:text-gray-300'
                 }`}
               >
-                <div className="truncate">{section.title}</div>
+                {section.title.split(' ')[0]}
               </motion.button>
             ))}
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onSearchClick}
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-300"
+            >
+              <Search className="w-4 h-4" />
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

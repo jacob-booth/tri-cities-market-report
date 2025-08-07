@@ -1,32 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
-import HeroSection from './components/HeroSection';
+import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
-import SectionCard from './components/SectionCard';
 import SearchModal from './components/SearchModal';
 import GlossaryDrawer from './components/GlossaryDrawer';
 import DynamicBackground from './components/DynamicBackground';
-import reportData from './data/report.json';
-import type { Section } from './types/report';
+import { useTheme, useNavigation, useModals } from './store/useAppStore';
+import { validateAndLoadReportData } from './utils/validateReport';
+import type { ReportData } from './utils/validateReport';
+
+// Lazy load heavy components for better performance
+const HeroSection = lazy(() => import('./components/HeroSection'));
+const SectionCard = lazy(() => import('./components/SectionCard'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-500"></div>
+  </div>
+);
 
 function App() {
-  const [currentSection, setCurrentSection] = useState('');
-  const [showSearch, setShowSearch] = useState(false);
-  const [showGlossary, setShowGlossary] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, setDarkMode } = useTheme();
+  const { currentSection, setCurrentSection } = useNavigation();
+  const { showSearch, setShowSearch, showGlossary, setShowGlossary } = useModals();
 
-  // Initialize dark mode from localStorage
+  // Initialize theme from system preference
   useEffect(() => {
     const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode) {
+    if (savedDarkMode !== null) {
       setDarkMode(JSON.parse(savedDarkMode));
     } else {
-      // Check system preference
       setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }
-  }, []);
+  }, [setDarkMode]);
 
-  // Update document class and localStorage when dark mode changes
+  // Update document class when dark mode changes
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -58,7 +67,7 @@ function App() {
     handleScroll(); // Set initial section
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [setCurrentSection]);
 
   const handleSectionClick = (sectionId: string) => {
     const element = document.querySelector(`[data-section="${sectionId}"]`);
@@ -73,92 +82,108 @@ function App() {
     }
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-  return (
-    <div className="min-h-screen relative">
-      {/* Dynamic Background */}
-      <DynamicBackground />
-      
-      {/* Navigation */}
-      <Navigation
-        sections={reportData.sections as Section[]}
-        activeSection={currentSection}
-        onNavigate={handleSectionClick}
-        onSearchClick={() => setShowSearch(true)}
-        onGlossaryClick={() => setShowGlossary(true)}
-        darkMode={darkMode}
-        onDarkModeToggle={toggleDarkMode}
-      />
-
-      {/* Hero Section */}
-      <HeroSection 
-        data={reportData.keyMetrics as any}
-      />
-
-      {/* Main Content */}
-      <main className="relative z-10">
-        {(reportData.sections as Section[]).map((section) => (
-          <SectionCard
-            key={section.id}
-            section={section}
-            onCitationClick={() => {}}
-          />
-        ))}
-      </main>
-
-      {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="mt-24 pt-12 border-t border-gray-200 dark:border-gray-700"
-      >
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-8 flex items-center justify-center">
-              <img 
-                src="./booth-logo.png" 
-                alt="BOOTH" 
-                className="w-8 h-8 object-contain"
-              />
-            </div>
-            <span className="font-cinzel text-xl font-semibold text-booth-gradient">
-              BOOTH
-            </span>
-          </div>
-          
-          <p className="text-gray-600 dark:text-gray-400 font-poppins mb-4">
-            Comprehensive Market Research & Strategic Analysis
-          </p>
-          
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
-            <span>© 2025 BOOTH Research Team</span>
-            <span>•</span>
-            <span>Tri-Cities Regional Analysis</span>
-            <span>•</span>
-            <span>Tennessee Real Estate Market</span>
+  // Load and validate report data
+  let reportData: ReportData;
+  try {
+    reportData = validateAndLoadReportData();
+  } catch (error) {
+    console.error('Failed to load report data:', error);
+    return (
+      <ErrorBoundary>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-red-600 mb-4">Data Loading Error</h2>
+            <p className="text-gray-600">Failed to load report data. Please refresh the page.</p>
           </div>
         </div>
-      </motion.footer>
+      </ErrorBoundary>
+    );
+  }
 
-      {/* Search Modal */}
-      <SearchModal
-        isOpen={showSearch}
-        onClose={() => setShowSearch(false)}
-        sections={reportData.sections as Section[]}
-        onSectionSelect={handleSectionClick}
-      />
+  return (
+    <ErrorBoundary>
+      <div className="min-h-screen relative">
+        {/* Dynamic Background */}
+        <DynamicBackground />
+        
+        {/* Navigation */}
+        <Navigation
+          sections={reportData.sections}
+          activeSection={currentSection}
+          onNavigate={handleSectionClick}
+          onSearchClick={() => setShowSearch(true)}
+          onGlossaryClick={() => setShowGlossary(true)}
+        />
 
-      {/* Glossary Drawer */}
-      <GlossaryDrawer
-        isOpen={showGlossary}
-        onClose={() => setShowGlossary(false)}
-        citations={[]}
-      />
-    </div>
+        {/* Hero Section */}
+        <Suspense fallback={<LoadingFallback />}>
+          <HeroSection data={reportData.keyMetrics} />
+        </Suspense>
+
+        {/* Main Content */}
+        <main className="relative z-10">
+          <Suspense fallback={<LoadingFallback />}>
+            {reportData.sections.map((section) => (
+              <SectionCard
+                key={section.id}
+                section={section}
+                onCitationClick={() => {}}
+              />
+            ))}
+          </Suspense>
+        </main>
+
+        {/* Footer */}
+        <motion.footer
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-24 pt-12 border-t border-gray-200 dark:border-gray-700"
+        >
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-8 flex items-center justify-center">
+                <img 
+                  src="./booth-logo.png" 
+                  alt="BOOTH" 
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
+              <span className="font-cinzel text-xl font-semibold text-booth-gradient">
+                BOOTH
+              </span>
+            </div>
+            
+            <p className="text-gray-600 dark:text-gray-400 font-poppins mb-4">
+              Comprehensive Market Research & Strategic Analysis
+            </p>
+            
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+              <span>© 2025 BOOTH Research Team</span>
+              <span>•</span>
+              <span>Tri-Cities Regional Analysis</span>
+              <span>•</span>
+              <span>Tennessee Real Estate Market</span>
+            </div>
+          </div>
+        </motion.footer>
+
+        {/* Search Modal */}
+        <SearchModal
+          isOpen={showSearch}
+          onClose={() => setShowSearch(false)}
+          sections={reportData.sections}
+          onSectionSelect={handleSectionClick}
+        />
+
+        {/* Glossary Drawer */}
+        <GlossaryDrawer
+          isOpen={showGlossary}
+          onClose={() => setShowGlossary(false)}
+          citations={reportData.citations}
+        />
+      </div>
+    </ErrorBoundary>
   );
 }
 
