@@ -93,10 +93,11 @@ export function validateFactCheckDatabase(data: unknown): data is z.infer<typeof
 }
 
 // Runtime validation with error handling
-export function validateAndLoadReportData(): z.infer<typeof ReportDataSchema> {
+export async function validateAndLoadReportData(): Promise<z.infer<typeof ReportDataSchema>> {
   try {
-    const reportData = require('../data/report.json');
-    const validatedData = ReportDataSchema.parse(reportData);
+    // Import the report data
+    const reportData = await import('../data/report.json');
+    const validatedData = ReportDataSchema.parse(reportData.default);
     console.log('✅ Report data validated successfully');
     return validatedData;
   } catch (error) {

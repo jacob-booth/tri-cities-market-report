@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from 'react';
+import { useEffect, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
@@ -83,17 +83,41 @@ function App() {
   };
 
   // Load and validate report data
-  let reportData: ReportData;
-  try {
-    reportData = validateAndLoadReportData();
-  } catch (error) {
-    console.error('Failed to load report data:', error);
+  const [reportData, setReportData] = useState<ReportData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await validateAndLoadReportData();
+        setReportData(data);
+      } catch (error) {
+        console.error('Failed to load report data:', error);
+        setError('Failed to load report data. Please refresh the page.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-500"></div>
+      </div>
+    );
+  }
+
+  if (error || !reportData) {
     return (
       <ErrorBoundary>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-red-600 mb-4">Data Loading Error</h2>
-            <p className="text-gray-600">Failed to load report data. Please refresh the page.</p>
+            <p className="text-gray-600">{error || 'Failed to load report data. Please refresh the page.'}</p>
           </div>
         </div>
       </ErrorBoundary>
