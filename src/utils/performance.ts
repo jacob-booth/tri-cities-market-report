@@ -84,7 +84,7 @@ export class WebVitalsMonitor {
     if ('PerformanceObserver' in window) {
       const observer = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        entries.forEach((entry) => {
+        entries.forEach((entry: any) => {
           if (process.env.NODE_ENV === 'development') {
             console.log('⚡ FID:', entry.processingStart - entry.startTime);
           }
@@ -100,8 +100,9 @@ export class WebVitalsMonitor {
       let clsValue = 0;
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!entry.hadRecentInput) {
-            clsValue += (entry as any).value;
+          const layoutShift = entry as any;
+          if (!layoutShift.hadRecentInput) {
+            clsValue += layoutShift.value;
           }
         }
         

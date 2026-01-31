@@ -11,7 +11,7 @@ export const CitationSchema = z.object({
 export const ChartDataSchema = z.object({
   type: z.enum(['bar', 'line', 'pie']),
   title: z.string(),
-  data: z.array(z.record(z.any())),
+  data: z.array(z.record(z.string(), z.any())),
 });
 
 export const SWOTDataSchema = z.object({
