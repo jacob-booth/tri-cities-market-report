@@ -106,7 +106,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          cname: jacob-booth.github.io
           
       - name: Notify deployment
         run: |
