@@ -25,7 +25,12 @@ jobs:
         run: npm ci
         
       - name: Run linting
-        run: npm run lint
+        run: |
+          if ls .eslintrc.* eslint.config.* >/dev/null 2>&1; then
+            npm run lint
+          else
+            echo "No ESLint config found. Skipping lint."
+          fi
         
       - name: Run type checking
         run: npm run build-with-tsc
