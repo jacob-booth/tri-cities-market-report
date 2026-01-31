@@ -116,7 +116,7 @@ const RealTimeMetrics: React.FC<RealTimeMetricsProps> = ({ className = '' }) => 
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AnimatePresence>
           {metrics.map((metric) => (
             <motion.div
@@ -125,16 +125,16 @@ const RealTimeMetrics: React.FC<RealTimeMetricsProps> = ({ className = '' }) => 
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-white/5 rounded-lg p-4 border border-white/10 min-w-0"
+              className="bg-white/5 rounded-lg p-4 border border-white/10"
             >
-              <div className="flex items-center justify-between mb-2">
-                <div className={`${metric.color} flex-shrink-0`}>
+              <div className="flex items-center justify-between mb-3">
+                <div className={`${metric.color}`}>
                   {metric.icon}
                 </div>
                 <motion.div
                   animate={{ scale: isRefreshing ? [1, 1.1, 1] : 1 }}
                   transition={{ duration: 0.3 }}
-                  className={`flex items-center space-x-1 text-xs flex-shrink-0 ${
+                  className={`flex items-center space-x-1 text-xs ${
                     metric.change > 0 ? 'text-green-400' : 'text-red-400'
                   }`}
                 >
@@ -143,12 +143,12 @@ const RealTimeMetrics: React.FC<RealTimeMetricsProps> = ({ className = '' }) => 
                   ) : (
                     <TrendingDown className="w-3 h-3" />
                   )}
-                  <span className="whitespace-nowrap">{Math.abs(metric.change)}%</span>
+                  <span>{Math.abs(metric.change)}%</span>
                 </motion.div>
               </div>
               
               <div className="space-y-1">
-                <div className="text-xl sm:text-2xl font-bold text-white whitespace-nowrap overflow-hidden text-ellipsis">
+                <div className="text-xl lg:text-2xl font-bold text-white">
                   {metric.value}
                 </div>
                 <div className="text-xs text-white/60">
