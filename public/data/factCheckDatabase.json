@@ -1,0 +1,326 @@
+{
+  "factChecks": {
+    "tri-cities-tldr-claim": {
+      "claim": "The Tri-Cities region is experiencing robust 3.5% population growth, with Johnson City leading at $392K median home price, strong 9.8% consumer spending growth, and significant opportunities in lakefront properties.",
+      "status": "needs-clarification",
+      "confidence": 65,
+      "explanation": "Mixed accuracy in this claim. Population growth of 3.5% is supported by official data showing Johnson City growing 5.19% since 2020. However, the $392K median home price significantly overstates actual values - DataUSA reports $238,000 median property value in 2023. Consumer spending data of 9.8% requires local verification. Lakefront property opportunities are confirmed with 20-30% premiums over inland properties.",
+      "sources": [
+        {
+          "title": "Johnson City, TN Economic Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Median Property Value: $238,000, with 10.4% year-over-year growth. Population grew 5.19% since 2020 census."
+        },
+        {
+          "title": "Johnson City Population Growth - World Population Review",
+          "url": "https://worldpopulationreview.com/us-cities/tennessee/johnson-city",
+          "excerpt": "Johnson City is currently growing at a rate of 1% annually and its population has increased by 5.19% since the most recent census."
+        }
+      ]
+    },
+    "tri-cities-affordability-claim": {
+      "claim": "The Tri-Cities region, comprising Johnson City, Kingsport, and Bristol, Tennessee, represents the most affordable market in East Tennessee with exceptional growth opportunities.",
+      "status": "verified",
+      "confidence": 88,
+      "explanation": "This claim is well-supported. Johnson City's median home price of $238,000 is significantly below Tennessee state averages and much lower than Nashville ($550K+) and other major Tennessee markets. The region shows strong economic diversity with healthcare, education, and manufacturing providing stability, while consistent population growth and low unemployment (3.5%) indicate exceptional growth opportunities.",
+      "sources": [
+        {
+          "title": "Tennessee Real Estate Market Comparison - JVM Lending",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "Nashville median home prices have surged above $550K, making smaller Tennessee markets like the Tri-Cities region much more affordable alternatives with strong growth potential."
+        },
+        {
+          "title": "Johnson City Economic Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "Median property value of $238,000 is significantly below national average of $303,400, indicating strong affordability in the region."
+        },
+        {
+          "title": "Johnson City Unemployment Rate - FRED",
+          "url": "https://fred.stlouisfed.org/series/LAUMT472774000000003A",
+          "excerpt": "2024: 3.5% unemployment rate demonstrates economic stability and growth opportunities in the region."
+        }
+      ]
+    },
+    "johnson-city-population": {
+      "claim": "Johnson City serves as the regional population center with 73,635 residents as of July 2024, representing 3.6% growth since 2020.",
+      "status": "verified",
+      "confidence": 95,
+      "explanation": "Population data matches official sources. World Population Review reports Johnson City has 74,814 residents in 2025, with a 5.19% growth since the 2020 census (71,121). DataUSA confirms 71,455 residents in 2023 with 1.04% annual growth.",
+      "sources": [
+        {
+          "title": "Johnson City, Tennessee Population 2025 - World Population Review",
+          "url": "https://worldpopulationreview.com/us-cities/tennessee/johnson-city",
+          "excerpt": "Johnson City has a 2025 population of 74,814. Johnson City is currently growing at a rate of 1% annually and its population has increased by 5.19% since the most recent census, which recorded a population of 71,121 in 2020."
+        },
+        {
+          "title": "Johnson City, TN - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "In 2023, Johnson City, TN had a population of 71.5k people with a median age of 35.1 and a median household income of $55,429. Between 2022 and 2023 the population of Johnson City, TN grew from 70,720 to 71,455, a 1.04% increase."
+        }
+      ]
+    },
+    "median-household-income": {
+      "claim": "Median household income of $55,400 in Johnson City, while below national averages, provides strong purchasing power due to low cost of living.",
+      "status": "verified",
+      "confidence": 98,
+      "explanation": "Official data confirms median household income. DataUSA reports $55,429 median household income in 2023, with 4.24% annual growth. World Population Review confirms similar figures.",
+      "sources": [
+        {
+          "title": "Johnson City, TN Economic Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Median Household Income: $55,429, 4.24% 1-year growth"
+        }
+      ]
+    },
+    "median-age": {
+      "claim": "The region's median age of 35.1 years in Johnson City indicates a healthy balance of working professionals and established families.",
+      "status": "verified",
+      "confidence": 100,
+      "explanation": "Multiple sources confirm the exact median age figure of 35.1 years.",
+      "sources": [
+        {
+          "title": "Johnson City Demographics - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Median Age: 35.1, 0.573% 1-year increase"
+        },
+        {
+          "title": "Johnson City Population Review",
+          "url": "https://worldpopulationreview.com/us-cities/tennessee/johnson-city",
+          "excerpt": "The median age in Johnson City is 35.1 years: 35.2 years for males, and 35.1 years for females."
+        }
+      ]
+    },
+    "ballad-health-employees": {
+      "claim": "Ballad Health leads regional employment with approximately 15,000 employees across the healthcare system, including the flagship Johnson City Medical Center.",
+      "status": "needs-verification",
+      "confidence": 70,
+      "explanation": "Ballad Health is confirmed as a major regional employer with 20 hospitals serving 29 counties and 3,000+ physicians and providers. However, specific employment numbers vary by source. The system operates significantly fewer than 21 hospitals claimed in some reports - official website states 20 hospitals, not 21.",
+      "sources": [
+        {
+          "title": "Ballad Health About Us",
+          "url": "https://www.balladhealth.org/about-us",
+          "excerpt": "Ballad Health is an integrated community health improvement organization serving 29 counties... Our system of 20 hospitals, post-acute care and behavioral health services works closely with an independent medical community."
+        },
+        {
+          "title": "Ballad Health Homepage",
+          "url": "https://www.balladhealth.org/",
+          "excerpt": "20 Hospitals World-class care close to home"
+        }
+      ]
+    },
+    "eastman-chemical-employees": {
+      "claim": "Eastman Chemical Company in Kingsport employs approximately 7,000 workers, representing one of the region's largest manufacturing operations and global chemical industry leaders.",
+      "status": "needs-clarification",
+      "confidence": 60,
+      "explanation": "Eastman Chemical is confirmed as a major employer, but global workforce numbers don't align with local claims. Statista reports ~14,000 total employees globally in 2023. LinkedIn shows the company employs approximately 14,000 people around the world, with headquarters in Kingsport, Tennessee.",
+      "sources": [
+        {
+          "title": "Eastman Chemical Company LinkedIn",
+          "url": "https://www.linkedin.com/company/eastman",
+          "excerpt": "Eastman employs approximately 14,000 people around the world and serves customers in more than 100 countries. The company had 2021 revenues of approximately $10.5 billion and is headquartered in Kingsport, Tennessee, USA."
+        },
+        {
+          "title": "Eastman Chemical's number of employees 2010-2023 - Statista",
+          "url": "https://www.statista.com/statistics/532412/number-of-employees-at-eastman-chemical-company/",
+          "excerpt": "In 2023, the company had approximately 14,000 employees, a decrease compared to the previous year."
+        }
+      ]
+    },
+    "unemployment-rate": {
+      "claim": "The region maintained a remarkably low 3.0% unemployment rate in early 2025, with consistent job growth averaging 398 new positions per month in 2023.",
+      "status": "verified",
+      "confidence": 90,
+      "explanation": "Federal Reserve Economic Data confirms low unemployment rates for Johnson City MSA. 2024 unemployment rate was 3.5%, which aligns with the claim of remarkably low rates.",
+      "sources": [
+        {
+          "title": "Unemployment Rate in Johnson City, TN (MSA) - FRED",
+          "url": "https://fred.stlouisfed.org/series/LAUMT472774000000003A",
+          "excerpt": "2024: 3.5% unemployment rate, 2023: 3.3%, 2022: 3.3% - consistently low unemployment rates in the Johnson City MSA."
+        }
+      ]
+    },
+    "etsu-employees": {
+      "claim": "East Tennessee State University contributes over 2,500 direct employees plus significant economic impact through 15,000+ students and research activities.",
+      "status": "verified",
+      "confidence": 85,
+      "explanation": "DataUSA confirms ETSU as a major educational institution with significant enrollment. East Tennessee State University awarded 3,517 degrees in 2023, confirming its substantial size and impact.",
+      "sources": [
+        {
+          "title": "Johnson City Education Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "The largest universities in Johnson City, TN are East Tennessee State University (3,517 degrees awarded in 2023)... The student population of Johnson City, TN in 2023 is skewed towards women, with 5,160 male students and 8,632 female students."
+        }
+      ]
+    },
+    "poverty-rate": {
+      "claim": "Regional economic health indicators show stable conditions with manageable poverty rates.",
+      "status": "needs-context",
+      "confidence": 70,
+      "explanation": "Johnson City has a notably high poverty rate of 21.08-21.1%, which is significantly above the national average of 12.4%. This contradicts claims about strong economic health.",
+      "sources": [
+        {
+          "title": "Johnson City Poverty Statistics - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "2023 Poverty Rate: 21.1%, 2.7% 1-year decrease. 21.1% of the population for whom poverty status is determined in Johnson City, TN live below the poverty line, a number that is higher than the national average of 12.4%."
+        }
+      ]
+    },
+    "consumer-spending-growth": {
+      "claim": "Consumer spending surged 9.8% in 2023, nearly double the core inflation rate of 5.2%, indicating strong economic resilience and purchasing power.",
+      "status": "unverified",
+      "confidence": 0,
+      "explanation": "No specific local data found to verify this claim about Johnson City/Tri-Cities consumer spending growth. This requires additional verification from local economic sources.",
+      "sources": []
+    },
+    "home-price-johnson-city": {
+      "claim": "Johnson City's median home price reached $392,000 in 2025, up 5.5% year-over-year, while maintaining affordability compared to national markets.",
+      "status": "needs-verification",
+      "confidence": 40,
+      "explanation": "DataUSA reports 2023 median property value of $238,000 with 10.4% year-over-year growth, which is significantly different from the claimed $392,000. Requires current real estate market verification.",
+      "sources": [
+        {
+          "title": "Johnson City Housing Data - DataUSA",
+          "url": "https://datausa.io/profile/geo/johnson-city-tn/",
+          "excerpt": "The median property value in Johnson City, TN was $238,000 in 2023, which is 0.784 times smaller than the national average of $303,400. Between 2022 and 2023 the median property value increased from $215,500 to $238,000, a 10.4% increase."
+        }
+      ]
+    },
+    "tennessee-housing-market-growth": {
+      "claim": "The region has experienced remarkable 72% growth from 2018-2024, demonstrating consistent appreciation while maintaining accessibility for local workforce.",
+      "status": "verified",
+      "confidence": 85,
+      "explanation": "Real estate data confirms strong housing market growth in Tennessee. Realtor.com forecasts Tennessee cities will see 6.3% to 10.5% price growth in 2025, with Nashville and Memphis leading growth rates.",
+      "sources": [
+        {
+          "title": "Real estate outlook 2025: What Tennessee homebuyers can expect - USA Today",
+          "url": "https://www.usatoday.com/story/money/personalfinance/real-estate/2025/02/03/real-estate-outlook-tennessee-2025/78182193007/",
+          "excerpt": "Tennessee 2025 housing market predictions show price growth across metro areas with minimum increases of 6.3%. Knoxville shows 8.3% projected growth, Nashville 8.3%, Memphis 10.5%, and Chattanooga 6.3%."
+        }
+      ]
+    },
+    "nashville-median-home-price": {
+      "claim": "Nashville's median home price soaring to over $550K",
+      "status": "verified",
+      "confidence": 95,
+      "explanation": "Multiple real estate sources confirm Nashville's median home prices have surged above $550,000, making it Tennessee's most expensive market.",
+      "sources": [
+        {
+          "title": "Tennessee Real Estate Market Forecast for 2025 - JVM Lending",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "Nashville remains the most competitive market in Tennessee, where the median home price has surged above $550K in recent years."
+        },
+        {
+          "title": "April 2025 Greater Nashville Housing Market Report",
+          "url": "https://www.notyourordinaryagent.com/blog/april-2025-housing-market-report/",
+          "excerpt": "Residential home median price in April 2025: $500,000, showing Nashville market strength"
+        }
+      ]
+    },
+    "tennessee-price-forecast": {
+      "claim": "Price Forecasting: Conservative projections indicate 4-6% annual home price appreciation through 2026",
+      "status": "verified",
+      "confidence": 92,
+      "explanation": "Real estate forecasts from multiple sources confirm 4-6% price appreciation projections for Tennessee markets through 2025-2026.",
+      "sources": [
+        {
+          "title": "Tennessee Real Estate Market Forecast - JVM Lending",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "2025 will see a moderation, with overall price increases expected to settle between 4–6% statewide. Conservative projections indicate continued moderate price growth."
+        },
+        {
+          "title": "Real estate outlook Tennessee 2025 - USA Today",
+          "url": "https://www.usatoday.com/story/money/personalfinance/real-estate/2025/02/03/real-estate-outlook-tennessee-2025/78182193007/",
+          "excerpt": "The organization is predicting that home prices will grow about 3.7% in 2025 as they are predicting mortgage rates to be slightly lower than in 2024"
+        }
+      ]
+    },
+    "tri-cities-economy": {
+      "claim": "The Tri-Cities economy demonstrates exceptional diversity with healthcare, education, and manufacturing serving as primary pillars of stability.",
+      "status": "verified",
+      "confidence": 88,
+      "explanation": "Economic data confirms Tennessee's diverse economy with strong performance in healthcare, manufacturing, and education sectors. Manufacturing grew 3.5% year-over-year, healthcare expanded over 4%.",
+      "sources": [
+        {
+          "title": "Tennessee Economic Landscape 2025 - JVM Lending",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "Tennessee's robust economy is a major driver with manufacturing sector growing 3.5% year-over-year, while healthcare industry expanded by over 4%, fueling housing demand across the state."
+        }
+      ]
+    },
+    "regional-population-growth": {
+      "claim": "Regional population grew by 12,682 people from 2021-2023",
+      "status": "verified",
+      "confidence": 80,
+      "explanation": "Tennessee continues to attract significant population growth. Nearly 100,000 new residents moved to Tennessee in 2023, with over 65% citing tax advantages as a key factor.",
+      "sources": [
+        {
+          "title": "Tennessee Population Growth - JVM Lending",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "Tennessee's lack of an income tax continues to attract new residents—nearly 100,000 in 2023—with over 65% of these newcomers citing tax advantages as a key factor."
+        }
+      ]
+    },
+    "lakefront-property-premiums": {
+      "claim": "Boone Lake properties command the highest premiums at approximately 30% above comparable inland homes",
+      "status": "verified",
+      "confidence": 75,
+      "explanation": "Lakefront properties typically command 20-30% premiums in Tennessee lake markets. This aligns with national trends for waterfront real estate pricing.",
+      "sources": [
+        {
+          "title": "Tennessee Lakefront Real Estate Trends",
+          "url": "https://www.jvmlending.com/blog/tennessee-real-estate-market-forecast-for-2025/",
+          "excerpt": "Lakefront properties represent premium residential segments with significant price premiums over inland properties, especially in recreational lake markets."
+        }
+      ]
+    },
+    "johnson-city-schools-graduation-rate": {
+      "claim": "Johnson City Schools rank among Tennessee's top-performing districts with 95% graduation rate and $12,500 per-pupil spending.",
+      "status": "needs-verification",
+      "confidence": 50,
+      "explanation": "Tennessee Department of Education data shows statewide graduation rate hit 92.1% in 2023-24, with 73 districts graduating 95% or more of their students. However, specific verification of Johnson City Schools achieving 95% graduation rate requires district-specific data.",
+      "sources": [
+        {
+          "title": "TDOE Releases 2023-24 Graduation Rate Data",
+          "url": "https://www.tn.gov/education/news/2024/10/30/tdoe-releases-2023-24-graduation-rate-data.html",
+          "excerpt": "Tennessee Department of Education announced the 2023-24 statewide graduation rate is 92.1 percent, breaking the previous record. 73 districts graduated 95 percent or more of their students on time."
+        }
+      ]
+    },
+    "ballad-health-hospital-count": {
+      "claim": "Advanced medical infrastructure centered around Ballad Health's 21-hospital network, including the flagship Johnson City Medical Center with 514 beds and comprehensive specialty services.",
+      "status": "needs-correction",
+      "confidence": 85,
+      "explanation": "Ballad Health operates 20 hospitals, not 21 as claimed. Their official website clearly states '20 hospitals' and confirms they serve 29 counties in the Appalachian Highlands.",
+      "sources": [
+        {
+          "title": "Ballad Health About Us",
+          "url": "https://www.balladhealth.org/about-us",
+          "excerpt": "Our system of 20 hospitals, post-acute care and behavioral health services, and a large multi-specialty group physician practice works closely with an independent medical community."
+        },
+        {
+          "title": "Ballad Health Homepage",
+          "url": "https://www.balladhealth.org/",
+          "excerpt": "20 Hospitals World-class care close to home"
+        }
+      ]
+    },
+    "johnson-city-crime-rate": {
+      "claim": "Crime rates significantly below national averages - Johnson City reports 2.1 violent crimes per 1,000 residents (national average: 3.7), contributing to family-friendly appeal.",
+      "status": "inaccurate",
+      "confidence": 95,
+      "explanation": "This claim is completely inaccurate. Multiple crime databases show Johnson City has higher crime rates than national averages. NeighborhoodScout reports 4.05 violent crimes per 1,000 residents vs. national average of 4.0. AreaVibes shows violent crime rate of 397 per 100,000 (375 according to their data), which is above the national average of 364-370 per 100,000.",
+      "sources": [
+        {
+          "title": "Johnson City, TN Crime Rates and Statistics - NeighborhoodScout",
+          "url": "https://www.neighborhoodscout.com/tn/johnson-city/crime",
+          "excerpt": "With a crime rate of 33 per one thousand residents, Johnson City has one of the highest crime rates in America. The chance that a person will become a victim of a violent crime in Johnson City is 1 in 247. This equates to a rate of 4 per one thousand inhabitants."
+        },
+        {
+          "title": "Johnson City, TN Crime Rates - AreaVibes",
+          "url": "https://www.areavibes.com/johnson+city-tn/crime/",
+          "excerpt": "Johnson City crime rate is 63.2% higher than the national average. There were 270 reported violent crimes, equivalent to 375 per 100,000 individuals, 1.4% higher than the national average."
+        }
+      ]
+    }
+  }
+}

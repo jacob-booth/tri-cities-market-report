@@ -1,0 +1,474 @@
+{
+  "metadata": {
+    "title": "BOOTH: Comprehensive Market Research Report",
+    "subtitle": "Tri-Cities Residential Real Estate Market Analysis",
+    "date": "January 31, 2026",
+    "author": "BOOTH Research Team"
+  },
+  "keyMetrics": {
+    "populationGrowth": 12682,
+    "populationGrowthPercent": 3.5,
+    "medianHomePrice": 399450,
+    "homePriceGrowth": 8,
+    "consumerSpendingGrowth": 9.8
+  },
+  "sections": [
+    {
+      "id": "executive-summary",
+      "title": "Executive Summary",
+      "tldr": "The Tri-Cities region is experiencing robust 3.5% population growth, with Johnson City leading at $392K median home price, strong 9.8% consumer spending growth, and significant opportunities in lakefront properties.",
+      "content": [
+        "The Tri-Cities region, comprising Johnson City, Kingsport, and Bristol, Tennessee, represents the most affordable market in East Tennessee with exceptional growth opportunities.",
+        "Regional population grew by 12,682 people from 2021-2023, with Johnson City leading at 73,635 residents and 3.6% growth since 2020.",
+        "Consumer spending surged 9.8% in 2023, nearly double the core inflation rate of 5.2%, indicating strong economic resilience and purchasing power.",
+        "Johnson City's median home price reached $392,000 in 2025, up 5.5% year-over-year, while maintaining affordability compared to national markets.",
+        "The region benefits from major economic anchors including Ballad Health (~15,000 employees), ETSU, and Eastman Chemical Company, providing economic stability and diverse employment opportunities.",
+        "Key opportunities include lakefront development (30% premium for Boone Lake properties), workforce housing initiatives, and downtown revitalization projects targeting young professionals and retirees."
+      ]
+    },
+    {
+      "id": "demographics",
+      "title": "Regional Demographics",
+      "tldr": "Johnson City leads with 73,635 residents and 35.1 median age, attracting young professionals with $55,400 median household income and diverse age distribution.",
+      "content": [
+        "Johnson City serves as the regional population center with 73,635 residents as of July 2024, representing 3.6% growth since 2020.",
+        "Kingsport follows with 57,109 residents (2.8% growth) and Bristol with 27,867 residents (2.7% growth), creating a combined metropolitan statistical area approaching 160,000.",
+        "The region's median age of 35.1 years in Johnson City indicates a healthy balance of working professionals and established families.",
+        "Median household income of $55,400 in Johnson City, while below national averages, provides strong purchasing power due to low cost of living.",
+        "Age distribution shows 29.7% of residents aged 18-34, indicating strong appeal to young professionals and families seeking affordable living with quality amenities."
+      ],
+      "charts": [
+        {
+          "type": "bar",
+          "title": "Population by City (2024)",
+          "data": [
+            {
+              "city": "Johnson City",
+              "population": 73635,
+              "growth": 3.6
+            },
+            {
+              "city": "Kingsport",
+              "population": 57109,
+              "growth": 2.8
+            },
+            {
+              "city": "Bristol",
+              "population": 27867,
+              "growth": 2.7
+            }
+          ]
+        },
+        {
+          "type": "pie",
+          "title": "Age Distribution - Tri-Cities Region",
+          "data": [
+            {
+              "age": "Under 18",
+              "value": 18.6,
+              "color": "#0f766e"
+            },
+            {
+              "age": "18-34",
+              "value": 29.7,
+              "color": "#14b8a6"
+            },
+            {
+              "age": "35-64",
+              "value": 36,
+              "color": "#2dd4bf"
+            },
+            {
+              "age": "65+",
+              "value": 15.7,
+              "color": "#99f6e4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "economic-overview",
+      "title": "Economic Landscape",
+      "tldr": "Diverse economy anchored by Ballad Health (15,000 employees), ETSU, and Eastman Chemical, with 3.0% unemployment and 398 jobs added monthly in 2023.",
+      "content": [
+        "The Tri-Cities economy demonstrates exceptional diversity with healthcare, education, and manufacturing serving as primary pillars of stability.",
+        "Ballad Health leads regional employment with approximately 15,000 employees across the healthcare system, including the flagship Johnson City Medical Center.",
+        "East Tennessee State University contributes over 2,500 direct employees plus significant economic impact through 15,000+ students and research activities.",
+        "Eastman Chemical Company in Kingsport employs approximately 7,000 workers, representing one of the region's largest manufacturing operations and global chemical industry leaders.",
+        "The region maintained a remarkably low 3.0% unemployment rate in early 2025, with consistent job growth averaging 398 new positions per month in 2023.",
+        "Labor force participation of 53% (December 2023) reflects both opportunities for workforce development and the stability of existing employment base."
+      ],
+      "charts": [
+        {
+          "type": "bar",
+          "title": "Employment by Major Sector",
+          "data": [
+            {
+              "sector": "Healthcare",
+              "employment": 15000,
+              "growth": 4.2
+            },
+            {
+              "sector": "Manufacturing",
+              "employment": 10000,
+              "growth": 1.8
+            },
+            {
+              "sector": "Other Services",
+              "employment": 8000,
+              "growth": 3.1
+            },
+            {
+              "sector": "Retail Trade",
+              "employment": 7000,
+              "growth": 3.5
+            },
+            {
+              "sector": "Education",
+              "employment": 5000,
+              "growth": 2.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "housing-market",
+      "title": "Residential Real Estate Market",
+      "tldr": "Johnson City leads at $392K median price (5.5% YoY growth), with healthy inventory levels and strong demand across all price segments.",
+      "content": [
+        "Johnson City's residential market reached a median home price of $392,000 in 2025, reflecting 5.5% year-over-year appreciation and continued affordability relative to regional and national markets.",
+        "Kingsport offers more affordable options at $305,000 median price (January 2025), while Bristol remains the most accessible at $209,000, providing entry-level opportunities.",
+        "Market inventory shows healthy levels with 472 homes for sale in Johnson City and 465 in Kingsport (March 2025), representing month-over-month increases of 1.7% and 14.5% respectively.",
+        "Average days on market remain reasonable at 53 days in Johnson City and 63 days in Kingsport, indicating balanced market conditions without excessive buyer competition.",
+        "The market has experienced remarkable 72% growth from 2018-2024, demonstrating consistent appreciation while maintaining accessibility for local workforce.",
+        "Strong buyer demand comes from young professionals (25-34), pre-retirees (55-64), families, and remote workers attracted by the region's quality of life and affordability."
+      ],
+      "charts": [
+        {
+          "type": "line",
+          "title": "Median Listing Price Trends (Recent Years)",
+          "data": [
+            {
+              "year": "2020",
+              "price": 271291
+            },
+            {
+              "year": "2021",
+              "price": 301783
+            },
+            {
+              "year": "2022",
+              "price": 361738
+            },
+            {
+              "year": "2023",
+              "price": 404864
+            },
+            {
+              "year": "2024",
+              "price": 370687
+            },
+            {
+              "year": "2025",
+              "price": 395326
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lakefront-properties",
+      "title": "Lakefront Real Estate Market",
+      "tldr": "Premium lakefront properties command 20-30% premiums ($250K-$1M+) with strong demand from retirees and second-home buyers across Boone, Watauga, and South Holston Lakes.",
+      "content": [
+        "Lakefront properties represent the region's premium residential segment, with prices ranging from $250,000 to over $1,000,000 depending on location, size, and lake access.",
+        "Boone Lake properties command the highest premiums at approximately 30% above comparable inland homes, followed by Watauga Lake and South Holston Lake at 20-25% premiums.",
+        "Average days on market for lakefront properties extend to 75 days on Boone Lake and 60 days on Watauga Lake, reflecting the specialized nature of these luxury purchases.",
+        "Primary buyers include pre-retirees and retirees seeking permanent residences, affluent families purchasing second homes, and investors targeting vacation rental opportunities.",
+        "Key features driving lakefront demand include private docks, scenic mountain views, proximity to recreational activities, and the appeal of Tennessee's tax-friendly environment.",
+        "Development opportunities exist for both luxury custom homes and more accessible lakefront communities, particularly as remote work enables broader geographic flexibility for buyers."
+      ]
+    },
+    {
+      "id": "consumer-behavior",
+      "title": "Market Dynamics & Consumer Preferences",
+      "tldr": "Consumer spending grew 9.8% in 2023, with buyers prioritizing home offices, energy efficiency, and scenic views as remote work reshapes housing demands.",
+      "content": [
+        "Consumer spending increased 9.8% in 2023, significantly outpacing the core inflation rate of 5.2%, demonstrating strong regional economic health and disposable income growth.",
+        "Housing preferences have evolved to prioritize home offices, open floor plans, and high-speed internet connectivity, reflecting the permanent shift toward remote and hybrid work arrangements.",
+        "Energy-efficient designs and sustainable features increasingly influence buyer decisions, particularly among younger demographics seeking long-term cost savings.",
+        "Scenic views, proximity to outdoor recreation, and community amenities rank as top priorities for relocating buyers, leveraging the region's natural advantages.",
+        "Key spending categories beyond housing include dining, entertainment, and outdoor recreation, supporting local business growth and community development.",
+        "The region attracts diverse buyer demographics including young professionals seeking affordability, families prioritizing school quality and safety, and retirees drawn by tax advantages and recreational opportunities."
+      ]
+    },
+    {
+      "id": "regional-infrastructure",
+      "title": "Regional Infrastructure & Quality of Life",
+      "tldr": "Strong education system with highly-rated schools, expanding healthcare infrastructure, growing transportation networks, and abundant outdoor recreation amenities enhancing livability.",
+      "content": [
+        "Education: Johnson City Schools rank among Tennessee's top-performing districts with 95% graduation rate and $12,500 per-pupil spending. The region hosts 3 universities including ETSU, King University, and Tusculum University.",
+        "Healthcare: Advanced medical infrastructure centered around Ballad Health's 21-hospital network, including the flagship Johnson City Medical Center with 514 beds and comprehensive specialty services.",
+        "Transportation: Strategic location at the intersection of I-26, I-81, and I-75, providing access to major Southeast markets. Regional airport (TRI) offers commercial flights to Charlotte, Atlanta, and Nashville.",
+        "Broadband: Citylink Fiber provides gigabit internet throughout Johnson City, while Charter Spectrum and other providers ensure reliable connectivity for remote workers and businesses.",
+        "Safety: Crime rates significantly below national averages - Johnson City reports 2.1 violent crimes per 1,000 residents (national average: 3.7), contributing to family-friendly appeal.",
+        "Recreation: 1,200+ acres of parks and greenways, three major lakes (Boone, Watauga, South Holston), Blue Ridge Parkway access, and proximity to Great Smoky Mountains National Park within 60 minutes."
+      ],
+      "charts": [
+        {
+          "type": "bar",
+          "title": "Quality of Life Metrics",
+          "data": [
+            {
+              "metric": "School Rating",
+              "score": 8.5,
+              "comparison": "State Avg: 7.2"
+            },
+            {
+              "metric": "Healthcare Access",
+              "score": 9.1,
+              "comparison": "State Avg: 7.8"
+            },
+            {
+              "metric": "Crime Safety",
+              "score": 8.8,
+              "comparison": "National Avg: 6.3"
+            },
+            {
+              "metric": "Recreation Score",
+              "score": 9.3,
+              "comparison": "State Avg: 7.5"
+            },
+            {
+              "metric": "Internet Speed",
+              "score": 8.9,
+              "comparison": "National Avg: 7.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market-trends",
+      "title": "Market Trends & Forecasting",
+      "tldr": "Projected 4-6% annual home price appreciation through 2026, inventory stabilization expected, and emerging opportunities in workforce housing and sustainable development.",
+      "content": [
+        "Price Forecasting: Conservative projections indicate 4-6% annual home price appreciation through 2026, driven by steady population growth and limited housing supply relative to demand.",
+        "Inventory Trends: Market inventory expected to stabilize at 3-4 months supply by late 2025, providing balanced conditions for both buyers and sellers after recent volatility.",
+        "Interest Rate Impact: Current mortgage rates in the 6.5-7.5% range are expected to moderate to 6.0-6.5% by 2026, potentially stimulating buyer activity and supporting price growth.",
+        "Demographic Shifts: 55+ relocations projected to increase 15% annually through 2027, driven by Tennessee's tax advantages and growing appeal among pre-retirees from higher-cost markets.",
+        "Development Pipeline: Over $200M in planned residential developments including 1,500+ units across workforce housing, senior living, and mixed-use projects scheduled for 2025-2027.",
+        "Investment Opportunity Areas: Short-term rental properties near lakes and downtown districts, workforce housing partnerships with major employers, and sustainable/energy-efficient home developments show strongest growth potential."
+      ],
+      "charts": [
+        {
+          "type": "line",
+          "title": "Market Forecast 2025-2027",
+          "data": [
+            {
+              "year": "2025",
+              "price": 400000,
+              "inventory": 3.2,
+              "sales": 1850
+            },
+            {
+              "year": "2026",
+              "price": 420000,
+              "inventory": 3.5,
+              "sales": 1950
+            },
+            {
+              "year": "2027",
+              "price": 440000,
+              "inventory": 3.7,
+              "sales": 2100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market-pulse",
+      "title": "Weekly Market Pulse (Auto-Generated)",
+      "tldr": "This week's market pulse highlights 5 local headlines impacting Tri-Cities housing and development.",
+      "content": [
+        "All But One Tri-Cities County Markets Hang On As Seller’s Markets - don fenley @ core data — Sun, 02 Nov 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMinwFBVV95cUxPbnUyRk9GSG01d0NHdjVyNUZDbVh4dTZZdnl6MTctalRpa3FkbDZEOElQZ3pYQ1JOVWJDall2RVpRSmhIT3Y2S0VLVjVkQWowYTlzLTNlMVczSnc2WlhQSjBTTXgtUlJzd1dmYUcxUTlKVDBnTVBBMHBPc19EVEphY2pGV1ZHT1J6d1ZrSDVjU1E4TUxPWkVUaVNfc2tEYVHSAaQBQVVfeXFMUFd6M19keG1JTkVfQTZ0RzhUMzlTY2YtM2dlMFMxS016YjAxeUNFVXZDZkVDWnVjdVFFR2FvVFk4SlMzZTFOTGZMeTBXWHhGYWRPVTd3X1N0Qi1abmc5NHJhQkdkYnZkLXYyamxiRE9mdzNUc1BOM1ZORkV3aGVwN18xY1d4dndVVUptbElkSGxXZUQwYTZ6RU82cHVQaFN2N0wxbWQ?oc=5",
+        "Tri-Cities housing market still favors sellers, analyst says - WJHL — Mon, 02 Jun 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMilwFBVV95cUxPT1FzckZQNlBYOE0weUxnQ1ZqbFp2Sm1uUVRVMTFDSkxfSW1yZmZ6YjkySFBjRUV5bmtkeXpvTWdVVWY0VG9MTUU3a2FHWGhWUm5ZbXBtMlcxdG1EZHpqSUljaXhDSmdNNEc1RTdYWUp1YXlVSHB3ZDlITlJHclpfOGc3TVhtek5oRHQ5ZUFGM28wYTJRckpJ0gGcAUFVX3lxTE1vaGV6RHF4cUZuMFBOLXpjWC1jenJXQ0ZpZGlBYm1STm5MUFY1Y3lXVkhrdWdueXRQLXAyeHpwdy1mb2c3Z2c1UGNmY0tIcEVZSnk4TjQ1N1dqSTY0RmhHVktpM0ZlV1NiRTZwVzlyallzZlJUM0h3YWtvNDB1bjM3SFdqZXR3aHY5VktiT3JfX09QYjhIeHJhMFlvOQ?oc=5",
+        "Redfin’s 2026 Predictions: Welcome to The Great Housing Reset - Redfin — Tue, 02 Dec 2025 08:00:00 GMT — https://news.google.com/rss/articles/CBMibEFVX3lxTE5KcWcxMXZfZm5JRnZldG5iWlBER0xFSUdrRDFkcUNwT040SzYxRkFUOFQzaWtUS1NvN0pfOHRBZ0ZidEIwXzRINkVaRkFMZFh4R2hmT3VrbktZR2VUQnY5U1J1cFZHbXpIQy1zXw?oc=5",
+        "Don Fenley: Tri-Cities luxury home market up 17% - Kingsport Times News — Sat, 30 Aug 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMihgFBVV95cUxQdVdXcDBVQmU5c0hlYm9DaGlZZzctUTl6VzB2dm53aE5xek5jMlU0TTVRQktLSGJMSXhUQlNHZUk0RWJaM19BTzdrOVozaUtvQVVuUDdPRWtmYU5talBtdmlrRmNzY0NCdC15TjI1U2c2Qk9WVW96aUJ2M1hMU2cxbEFJUy04QQ?oc=5",
+        "Tennessee Housing Market: Statistics and Forecast 2025-2026 - Norada Real Estate Investments — Sun, 02 Nov 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMicEFVX3lxTE1pSGE1Nksxci1FVVNza2theDJoV1prTVJINkxtazU2SUdpamE2b0xZSkV1MDZxcllYR1ZTZVlxWXRMbHJweEZIQnBPUE9UNkFGOVZ4ZVdrakZZdk1aZ05JeTVIS3NQek1ON2RqQ1o1Skk?oc=5"
+      ]
+    },
+    {
+      "id": "swot-analysis",
+      "title": "Strategic Market Analysis",
+      "tldr": "Region leverages affordability, natural beauty, and economic diversity while addressing infrastructure challenges and housing workforce needs.",
+      "content": [
+        "Strategic analysis reveals the Tri-Cities region's unique position as Tennessee's most affordable major market with exceptional growth potential and quality-of-life advantages.",
+        "The combination of natural assets, economic stability, and fiscal advantages creates a compelling value proposition for diverse buyer segments and business investments."
+      ],
+      "swot": {
+        "strengths": [
+          "Affordability compared to national averages and regional competitors",
+          "Natural beauty and outdoor recreation (lakes, mountains, trails)",
+          "Stable economy with diverse sectors (healthcare, education, manufacturing)",
+          "No state income tax, attracting retirees and professionals",
+          "Strong community appeal and established quality of life"
+        ],
+        "weaknesses": [
+          "Lower median incomes compared to state and national averages",
+          "Aging population in Kingsport and Bristol creating demographic challenges",
+          "Limited affordable housing for local workforce relative to demand",
+          "Infrastructure strain from rapid population and development growth",
+          "Limited cultural amenities for diverse newcomers and young professionals"
+        ],
+        "opportunities": [
+          "Lakefront development for primary and vacation home markets",
+          "Workforce housing development to meet local employment demands",
+          "Downtown revitalization for urban living and mixed-use developments",
+          "Technology adoption (PropTech) to attract tech-savvy buyers and investors",
+          "Regional collaboration to promote unified market growth and tourism"
+        ],
+        "threats": [
+          "Economic volatility or potential recession affecting buyer confidence",
+          "Housing affordability challenges pricing out local workforce",
+          "Natural disaster risks including flooding and severe weather events",
+          "Regulatory changes affecting zoning, development, and property taxes",
+          "Competition from other regional markets (Asheville, NC; Knoxville, TN)"
+        ]
+      }
+    },
+    {
+      "id": "strategic-recommendations",
+      "title": "Strategic Recommendations",
+      "tldr": "Focus on workforce housing, lakefront development, PropTech adoption, and regional collaboration to capitalize on growth while maintaining affordability.",
+      "content": [
+        "Market stakeholders should prioritize workforce housing development through strategic partnerships with major employers like Ballad Health and ETSU to ensure sustainable growth.",
+        "Real estate professionals should leverage the region's lifestyle assets—lakes, mountains, schools, and community—to attract relocation buyers from higher-cost markets.",
+        "Adoption of virtual tours, digital closings, and PropTech solutions will enhance market competitiveness and appeal to tech-savvy buyers increasingly comfortable with remote transactions.",
+        "Niche market development, particularly 55+ communities and lakefront properties, presents significant opportunities for specialized developers and investors.",
+        "Downtown infill projects and mixed-use developments can capture young professional demand while revitalizing urban cores in Johnson City, Kingsport, and Bristol.",
+        "Regional collaboration among municipalities, economic development authorities, and real estate professionals will maximize marketing effectiveness and infrastructure development.",
+        "Zoning reforms and development incentives should focus on affordable housing creation while maintaining community character and environmental sustainability.",
+        "Investment in infrastructure improvements—broadband, transportation, utilities—will support continued growth while preventing development constraints."
+      ]
+    },
+    {
+      "id": "conclusion",
+      "title": "Market Outlook",
+      "tldr": "The Tri-Cities region offers compelling opportunities for sustainable growth, balancing affordability with quality of life in Tennessee's most accessible major market.",
+      "content": [
+        "The Tri-Cities region stands uniquely positioned as Tennessee's most affordable major market with exceptional fundamentals for continued growth and investment success.",
+        "With population growth of 3.5%, diverse economic anchors, and strategic location advantages, the region offers sustainable opportunities for residents, businesses, and investors.",
+        "Key success factors include maintaining affordability while improving infrastructure, developing workforce housing, and leveraging natural assets for tourism and recreation.",
+        "The combination of economic stability, fiscal advantages, and quality of life creates a compelling value proposition that differentiates the Tri-Cities from competing regional markets.",
+        "Future growth depends on collaborative efforts to address infrastructure needs, housing accessibility, and workforce development while preserving the community character that attracts new residents.",
+        "Market participants who understand and leverage these regional advantages—affordability, natural beauty, economic diversity, and community appeal—are positioned for long-term success in this dynamic and growing market."
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "id": 1,
+      "title": "Johnson City Development Authority: Economic Development Strategic Plan",
+      "author": "Johnson City Development Authority",
+      "year": 2024,
+      "url": "https://www.thejcda.org/",
+      "context": "Comprehensive overview of Johnson City's economic development initiatives, downtown revitalization programs, and business support resources for the Tri-Cities region.",
+      "excerpt": "Comprehensive overview of Johnson City's economic development initiatives, downtown revitalization programs, and business support resources for the Tri-Cities region.",
+      "relevance": "Primary source for Johnson City development data and strategic planning initiatives."
+    },
+    {
+      "id": 2,
+      "title": "2023 Tennessee Housing Market at a Glance",
+      "author": "Tennessee Housing Development Agency",
+      "year": 2023,
+      "url": "https://thda.org/research-reports/tennessee-housing-market",
+      "context": "Annual report highlighting housing affordability trends, demographic shifts, and market conditions across Tennessee, including detailed MSA analysis for the Johnson City region.",
+      "excerpt": "Annual report highlighting housing affordability trends, demographic shifts, and market conditions across Tennessee, including detailed MSA analysis for the Johnson City region.",
+      "relevance": "Official state data on housing trends and demographics in the Johnson City-Kingsport-Bristol MSA."
+    },
+    {
+      "id": 3,
+      "title": "Northeast Tennessee Economic Development Strategic Plan",
+      "author": "Northeast Tennessee Economic Development Corporation",
+      "year": 2024,
+      "url": "https://www.netedc.org/",
+      "context": "Regional economic development analysis and loan program data for the Northeast Tennessee region, including Washington, Sullivan, and Carter counties.",
+      "excerpt": "Regional economic development analysis and loan program data for the Northeast Tennessee region, including Washington, Sullivan, and Carter counties.",
+      "relevance": "Regional economic development data and business lending information for the greater Tri-Cities area."
+    },
+    {
+      "id": 4,
+      "title": "City of Johnson City Economic Development Report",
+      "author": "City of Johnson City Economic Development Department",
+      "year": 2024,
+      "url": "https://www.johnsoncitytn.org/business/economic_development.php",
+      "context": "Municipal economic development initiatives, workforce development programs, and quality of life metrics for Johnson City and surrounding areas.",
+      "excerpt": "Municipal economic development initiatives, workforce development programs, and quality of life metrics for Johnson City and surrounding areas.",
+      "relevance": "Official city data on economic development, workforce initiatives, and business support programs."
+    },
+    {
+      "id": 5,
+      "title": "MTSU Business and Economic Research Center Housing Tennessee Report",
+      "author": "Middle Tennessee State University Business and Economic Research Center",
+      "year": 2024,
+      "url": "https://www.mtsu.edu/berc/housing/",
+      "context": "Comprehensive analysis of Tennessee housing markets, including regional trends, affordability metrics, and demographic analysis with quarterly updates.",
+      "excerpt": "Comprehensive analysis of Tennessee housing markets, including regional trends, affordability metrics, and demographic analysis with quarterly updates.",
+      "relevance": "Academic research on Tennessee housing markets with regional breakdowns including the Tri-Cities area."
+    },
+    {
+      "id": 6,
+      "title": "All But One Tri-Cities County Markets Hang On As Seller’s Markets - don fenley @ core data",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbnUyRk9GSG01d0NHdjVyNUZDbVh4dTZZdnl6MTctalRpa3FkbDZEOElQZ3pYQ1JOVWJDall2RVpRSmhIT3Y2S0VLVjVkQWowYTlzLTNlMVczSnc2WlhQSjBTTXgtUlJzd1dmYUcxUTlKVDBnTVBBMHBPc19EVEphY2pGV1ZHT1J6d1ZrSDVjU1E4TUxPWkVUaVNfc2tEYVHSAaQBQVVfeXFMUFd6M19keG1JTkVfQTZ0RzhUMzlTY2YtM2dlMFMxS016YjAxeUNFVXZDZkVDWnVjdVFFR2FvVFk4SlMzZTFOTGZMeTBXWHhGYWRPVTd3X1N0Qi1abmc5NHJhQkdkYnZkLXYyamxiRE9mdzNUc1BOM1ZORkV3aGVwN18xY1d4dndVVUptbElkSGxXZUQwYTZ6RU82cHVQaFN2N0wxbWQ?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "All But One Tri-Cities County Markets Hang On As Seller’s Markets - don fenley @ core data",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 7,
+      "title": "Tri-Cities housing market still favors sellers, analyst says - WJHL",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPT1FzckZQNlBYOE0weUxnQ1ZqbFp2Sm1uUVRVMTFDSkxfSW1yZmZ6YjkySFBjRUV5bmtkeXpvTWdVVWY0VG9MTUU3a2FHWGhWUm5ZbXBtMlcxdG1EZHpqSUljaXhDSmdNNEc1RTdYWUp1YXlVSHB3ZDlITlJHclpfOGc3TVhtek5oRHQ5ZUFGM28wYTJRckpJ0gGcAUFVX3lxTE1vaGV6RHF4cUZuMFBOLXpjWC1jenJXQ0ZpZGlBYm1STm5MUFY1Y3lXVkhrdWdueXRQLXAyeHpwdy1mb2c3Z2c1UGNmY0tIcEVZSnk4TjQ1N1dqSTY0RmhHVktpM0ZlV1NiRTZwVzlyallzZlJUM0h3YWtvNDB1bjM3SFdqZXR3aHY5VktiT3JfX09QYjhIeHJhMFlvOQ?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Tri-Cities housing market still favors sellers, analyst says - WJHL",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 8,
+      "title": "Redfin’s 2026 Predictions: Welcome to The Great Housing Reset - Redfin",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5KcWcxMXZfZm5JRnZldG5iWlBER0xFSUdrRDFkcUNwT040SzYxRkFUOFQzaWtUS1NvN0pfOHRBZ0ZidEIwXzRINkVaRkFMZFh4R2hmT3VrbktZR2VUQnY5U1J1cFZHbXpIQy1zXw?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Redfin’s 2026 Predictions: Welcome to The Great Housing Reset - Redfin",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 9,
+      "title": "Don Fenley: Tri-Cities luxury home market up 17% - Kingsport Times News",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdVdXcDBVQmU5c0hlYm9DaGlZZzctUTl6VzB2dm53aE5xek5jMlU0TTVRQktLSGJMSXhUQlNHZUk0RWJaM19BTzdrOVozaUtvQVVuUDdPRWtmYU5talBtdmlrRmNzY0NCdC15TjI1U2c2Qk9WVW96aUJ2M1hMU2cxbEFJUy04QQ?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Don Fenley: Tri-Cities luxury home market up 17% - Kingsport Times News",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 10,
+      "title": "Tennessee Housing Market: Statistics and Forecast 2025-2026 - Norada Real Estate Investments",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1pSGE1Nksxci1FVVNza2theDJoV1prTVJINkxtazU2SUdpamE2b0xZSkV1MDZxcllYR1ZTZVlxWXRMbHJweEZIQnBPUE9UNkFGOVZ4ZVdrakZZdk1aZ05JeTVIS3NQek1ON2RqQ1o1Skk?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Tennessee Housing Market: Statistics and Forecast 2025-2026 - Norada Real Estate Investments",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    }
+  ]
+}

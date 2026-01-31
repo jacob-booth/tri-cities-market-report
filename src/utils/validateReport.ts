@@ -95,9 +95,10 @@ export function validateFactCheckDatabase(data: unknown): data is z.infer<typeof
 // Runtime validation with error handling
 export async function validateAndLoadReportData(): Promise<z.infer<typeof ReportDataSchema>> {
   try {
-    // Import the report data
-    const reportData = await import('../data/report.json');
-    const validatedData = ReportDataSchema.parse(reportData.default);
+    // Fetch the report data from public folder
+    const response = await fetch('/tri-cities-market-report/data/report.json');
+    const reportData = await response.json();
+    const validatedData = ReportDataSchema.parse(reportData);
     console.log('✅ Report data validated successfully');
     return validatedData;
   } catch (error) {
@@ -106,9 +107,10 @@ export async function validateAndLoadReportData(): Promise<z.infer<typeof Report
   }
 }
 
-export function validateAndLoadFactCheckDatabase(): z.infer<typeof FactCheckDatabaseSchema> {
+export async function validateAndLoadFactCheckDatabase(): Promise<z.infer<typeof FactCheckDatabaseSchema>> {
   try {
-    const factCheckData = require('../data/factCheckDatabase.json');
+    const response = await fetch('/tri-cities-market-report/data/factCheckDatabase.json');
+    const factCheckData = await response.json();
     const validatedData = FactCheckDatabaseSchema.parse(factCheckData);
     console.log('✅ Fact check database validated successfully');
     return validatedData;
