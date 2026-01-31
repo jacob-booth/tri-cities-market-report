@@ -106,41 +106,47 @@ export const useAppStore = create<AppState>()(
 );
 
 // Selector hooks for better performance
-export const useTheme = () => useAppStore((state) => ({
-  darkMode: state.darkMode,
-  setDarkMode: state.setDarkMode,
-  toggleDarkMode: state.toggleDarkMode,
-}));
+export const useTheme = () => {
+  const darkMode = useAppStore((state) => state.darkMode);
+  const setDarkMode = useAppStore((state) => state.setDarkMode);
+  const toggleDarkMode = useAppStore((state) => state.toggleDarkMode);
+  return { darkMode, setDarkMode, toggleDarkMode };
+};
 
-export const useNavigation = () => useAppStore((state) => ({
-  currentSection: state.currentSection,
-  setCurrentSection: state.setCurrentSection,
-}));
+export const useNavigation = () => {
+  const currentSection = useAppStore((state) => state.currentSection);
+  const setCurrentSection = useAppStore((state) => state.setCurrentSection);
+  return { currentSection, setCurrentSection };
+};
 
-export const useModals = () => useAppStore((state) => ({
-  showSearch: state.showSearch,
-  setShowSearch: state.setShowSearch,
-  showGlossary: state.showGlossary,
-  setShowGlossary: state.setShowGlossary,
-}));
+export const useModals = () => {
+  const showSearch = useAppStore((state) => state.showSearch);
+  const setShowSearch = useAppStore((state) => state.setShowSearch);
+  const showGlossary = useAppStore((state) => state.showGlossary);
+  const setShowGlossary = useAppStore((state) => state.setShowGlossary);
+  return { showSearch, setShowSearch, showGlossary, setShowGlossary };
+};
 
-export const useFactCheck = () => useAppStore((state) => ({
-  factCheckResults: state.factCheckResults,
-  setFactCheckResult: state.setFactCheckResult,
-  clearFactCheckResults: state.clearFactCheckResults,
-}));
+export const useFactCheck = () => {
+  const factCheckResults = useAppStore((state) => state.factCheckResults);
+  const setFactCheckResult = useAppStore((state) => state.setFactCheckResult);
+  const clearFactCheckResults = useAppStore((state) => state.clearFactCheckResults);
+  return { factCheckResults, setFactCheckResult, clearFactCheckResults };
+};
 
-export const useCitations = () => useAppStore((state) => ({
-  selectedCitations: state.selectedCitations,
-  addCitation: state.addCitation,
-  removeCitation: state.removeCitation,
-  clearCitations: state.clearCitations,
-}));
+export const useCitations = () => {
+  const selectedCitations = useAppStore((state) => state.selectedCitations);
+  const addCitation = useAppStore((state) => state.addCitation);
+  const removeCitation = useAppStore((state) => state.removeCitation);
+  const clearCitations = useAppStore((state) => state.clearCitations);
+  return { selectedCitations, addCitation, removeCitation, clearCitations };
+};
 
-export const useAppStatus = () => useAppStore((state) => ({
-  isLoading: state.isLoading,
-  setLoading: state.setLoading,
-  error: state.error,
-  setError: state.setError,
-  clearError: state.clearError,
-}));
+export const useAppStatus = () => {
+  const isLoading = useAppStore((state) => state.isLoading);
+  const setLoading = useAppStore((state) => state.setLoading);
+  const error = useAppStore((state) => state.error);
+  const setError = useAppStore((state) => state.setError);
+  const clearError = useAppStore((state) => state.clearError);
+  return { isLoading, setLoading, error, setError, clearError };
+};
