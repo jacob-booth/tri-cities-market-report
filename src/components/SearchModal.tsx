@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowUp, ArrowDown } from 'lucide-react';
 import Fuse from 'fuse.js';
@@ -23,12 +23,12 @@ const SearchModal: React.FC<SearchModalProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  // Configure Fuse.js for fuzzy search
-  const fuse = new Fuse(sections, {
+  // Configure Fuse.js for fuzzy search (memoized to prevent infinite loop)
+  const fuse = useMemo(() => new Fuse(sections, {
     keys: ['title', 'tldr', 'content'],
     threshold: 0.3,
     includeScore: true,
-  });
+  }), [sections]);
 
   // Handle search results
   useEffect(() => {
