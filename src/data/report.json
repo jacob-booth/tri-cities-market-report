@@ -2,14 +2,14 @@
   "metadata": {
     "title": "BOOTH: Comprehensive Market Research Report",
     "subtitle": "Tri-Cities Residential Real Estate Market Analysis",
-    "date": "June 3, 2025",
+    "date": "January 31, 2026",
     "author": "BOOTH Research Team"
   },
   "keyMetrics": {
     "populationGrowth": 12682,
     "populationGrowthPercent": 3.5,
-    "medianHomePrice": 392000,
-    "homePriceGrowth": 5.5,
+    "medianHomePrice": 399450,
+    "homePriceGrowth": 8,
     "consumerSpendingGrowth": 9.8
   },
   "sections": [
@@ -42,19 +42,47 @@
           "type": "bar",
           "title": "Population by City (2024)",
           "data": [
-            { "city": "Johnson City", "population": 73635, "growth": 3.6 },
-            { "city": "Kingsport", "population": 57109, "growth": 2.8 },
-            { "city": "Bristol", "population": 27867, "growth": 2.7 }
+            {
+              "city": "Johnson City",
+              "population": 73635,
+              "growth": 3.6
+            },
+            {
+              "city": "Kingsport",
+              "population": 57109,
+              "growth": 2.8
+            },
+            {
+              "city": "Bristol",
+              "population": 27867,
+              "growth": 2.7
+            }
           ]
         },
         {
           "type": "pie",
           "title": "Age Distribution - Tri-Cities Region",
           "data": [
-            { "age": "Under 18", "value": 18.6, "color": "#0f766e" },
-            { "age": "18-34", "value": 29.7, "color": "#14b8a6" },
-            { "age": "35-64", "value": 36.0, "color": "#2dd4bf" },
-            { "age": "65+", "value": 15.7, "color": "#99f6e4" }
+            {
+              "age": "Under 18",
+              "value": 18.6,
+              "color": "#0f766e"
+            },
+            {
+              "age": "18-34",
+              "value": 29.7,
+              "color": "#14b8a6"
+            },
+            {
+              "age": "35-64",
+              "value": 36,
+              "color": "#2dd4bf"
+            },
+            {
+              "age": "65+",
+              "value": 15.7,
+              "color": "#99f6e4"
+            }
           ]
         }
       ]
@@ -76,11 +104,31 @@
           "type": "bar",
           "title": "Employment by Major Sector",
           "data": [
-            { "sector": "Healthcare", "employment": 15000, "growth": 4.2 },
-            { "sector": "Manufacturing", "employment": 10000, "growth": 1.8 },
-            { "sector": "Other Services", "employment": 8000, "growth": 3.1 },
-            { "sector": "Retail Trade", "employment": 7000, "growth": 3.5 },
-            { "sector": "Education", "employment": 5000, "growth": 2.1 }
+            {
+              "sector": "Healthcare",
+              "employment": 15000,
+              "growth": 4.2
+            },
+            {
+              "sector": "Manufacturing",
+              "employment": 10000,
+              "growth": 1.8
+            },
+            {
+              "sector": "Other Services",
+              "employment": 8000,
+              "growth": 3.1
+            },
+            {
+              "sector": "Retail Trade",
+              "employment": 7000,
+              "growth": 3.5
+            },
+            {
+              "sector": "Education",
+              "employment": 5000,
+              "growth": 2.1
+            }
           ]
         }
       ]
@@ -100,14 +148,32 @@
       "charts": [
         {
           "type": "line",
-          "title": "Median Home Price Trends (2019-2024)",
+          "title": "Median Listing Price Trends (Recent Years)",
           "data": [
-            { "year": "2019", "price": 228000 },
-            { "year": "2020", "price": 250000 },
-            { "year": "2021", "price": 285000 },
-            { "year": "2022", "price": 320000 },
-            { "year": "2023", "price": 350000 },
-            { "year": "2024", "price": 380200 }
+            {
+              "year": "2020",
+              "price": 271291
+            },
+            {
+              "year": "2021",
+              "price": 301783
+            },
+            {
+              "year": "2022",
+              "price": 361738
+            },
+            {
+              "year": "2023",
+              "price": 404864
+            },
+            {
+              "year": "2024",
+              "price": 370687
+            },
+            {
+              "year": "2025",
+              "price": 395326
+            }
           ]
         }
       ]
@@ -155,11 +221,31 @@
           "type": "bar",
           "title": "Quality of Life Metrics",
           "data": [
-            { "metric": "School Rating", "score": 8.5, "comparison": "State Avg: 7.2" },
-            { "metric": "Healthcare Access", "score": 9.1, "comparison": "State Avg: 7.8" },
-            { "metric": "Crime Safety", "score": 8.8, "comparison": "National Avg: 6.3" },
-            { "metric": "Recreation Score", "score": 9.3, "comparison": "State Avg: 7.5" },
-            { "metric": "Internet Speed", "score": 8.9, "comparison": "National Avg: 7.1" }
+            {
+              "metric": "School Rating",
+              "score": 8.5,
+              "comparison": "State Avg: 7.2"
+            },
+            {
+              "metric": "Healthcare Access",
+              "score": 9.1,
+              "comparison": "State Avg: 7.8"
+            },
+            {
+              "metric": "Crime Safety",
+              "score": 8.8,
+              "comparison": "National Avg: 6.3"
+            },
+            {
+              "metric": "Recreation Score",
+              "score": 9.3,
+              "comparison": "State Avg: 7.5"
+            },
+            {
+              "metric": "Internet Speed",
+              "score": 8.9,
+              "comparison": "National Avg: 7.1"
+            }
           ]
         }
       ]
@@ -181,11 +267,38 @@
           "type": "line",
           "title": "Market Forecast 2025-2027",
           "data": [
-            { "year": "2025", "price": 400000, "inventory": 3.2, "sales": 1850 },
-            { "year": "2026", "price": 420000, "inventory": 3.5, "sales": 1950 },
-            { "year": "2027", "price": 440000, "inventory": 3.7, "sales": 2100 }
+            {
+              "year": "2025",
+              "price": 400000,
+              "inventory": 3.2,
+              "sales": 1850
+            },
+            {
+              "year": "2026",
+              "price": 420000,
+              "inventory": 3.5,
+              "sales": 1950
+            },
+            {
+              "year": "2027",
+              "price": 440000,
+              "inventory": 3.7,
+              "sales": 2100
+            }
           ]
         }
+      ]
+    },
+    {
+      "id": "market-pulse",
+      "title": "Weekly Market Pulse (Auto-Generated)",
+      "tldr": "This week's market pulse highlights 5 local headlines impacting Tri-Cities housing and development.",
+      "content": [
+        "All But One Tri-Cities County Markets Hang On As Seller’s Markets - don fenley @ core data — Sun, 02 Nov 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMinwFBVV95cUxPbnUyRk9GSG01d0NHdjVyNUZDbVh4dTZZdnl6MTctalRpa3FkbDZEOElQZ3pYQ1JOVWJDall2RVpRSmhIT3Y2S0VLVjVkQWowYTlzLTNlMVczSnc2WlhQSjBTTXgtUlJzd1dmYUcxUTlKVDBnTVBBMHBPc19EVEphY2pGV1ZHT1J6d1ZrSDVjU1E4TUxPWkVUaVNfc2tEYVHSAaQBQVVfeXFMUFd6M19keG1JTkVfQTZ0RzhUMzlTY2YtM2dlMFMxS016YjAxeUNFVXZDZkVDWnVjdVFFR2FvVFk4SlMzZTFOTGZMeTBXWHhGYWRPVTd3X1N0Qi1abmc5NHJhQkdkYnZkLXYyamxiRE9mdzNUc1BOM1ZORkV3aGVwN18xY1d4dndVVUptbElkSGxXZUQwYTZ6RU82cHVQaFN2N0wxbWQ?oc=5",
+        "Tri-Cities housing market still favors sellers, analyst says - WJHL — Mon, 02 Jun 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMilwFBVV95cUxPT1FzckZQNlBYOE0weUxnQ1ZqbFp2Sm1uUVRVMTFDSkxfSW1yZmZ6YjkySFBjRUV5bmtkeXpvTWdVVWY0VG9MTUU3a2FHWGhWUm5ZbXBtMlcxdG1EZHpqSUljaXhDSmdNNEc1RTdYWUp1YXlVSHB3ZDlITlJHclpfOGc3TVhtek5oRHQ5ZUFGM28wYTJRckpJ0gGcAUFVX3lxTE1vaGV6RHF4cUZuMFBOLXpjWC1jenJXQ0ZpZGlBYm1STm5MUFY1Y3lXVkhrdWdueXRQLXAyeHpwdy1mb2c3Z2c1UGNmY0tIcEVZSnk4TjQ1N1dqSTY0RmhHVktpM0ZlV1NiRTZwVzlyallzZlJUM0h3YWtvNDB1bjM3SFdqZXR3aHY5VktiT3JfX09QYjhIeHJhMFlvOQ?oc=5",
+        "Redfin’s 2026 Predictions: Welcome to The Great Housing Reset - Redfin — Tue, 02 Dec 2025 08:00:00 GMT — https://news.google.com/rss/articles/CBMibEFVX3lxTE5KcWcxMXZfZm5JRnZldG5iWlBER0xFSUdrRDFkcUNwT040SzYxRkFUOFQzaWtUS1NvN0pfOHRBZ0ZidEIwXzRINkVaRkFMZFh4R2hmT3VrbktZR2VUQnY5U1J1cFZHbXpIQy1zXw?oc=5",
+        "Don Fenley: Tri-Cities luxury home market up 17% - Kingsport Times News — Sat, 30 Aug 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMihgFBVV95cUxQdVdXcDBVQmU5c0hlYm9DaGlZZzctUTl6VzB2dm53aE5xek5jMlU0TTVRQktLSGJMSXhUQlNHZUk0RWJaM19BTzdrOVozaUtvQVVuUDdPRWtmYU5talBtdmlrRmNzY0NCdC15TjI1U2c2Qk9WVW96aUJ2M1hMU2cxbEFJUy04QQ?oc=5",
+        "Tennessee Housing Market: Statistics and Forecast 2025-2026 - Norada Real Estate Investments — Sun, 02 Nov 2025 07:00:00 GMT — https://news.google.com/rss/articles/CBMicEFVX3lxTE1pSGE1Nksxci1FVVNza2theDJoV1prTVJINkxtazU2SUdpamE2b0xZSkV1MDZxcllYR1ZTZVlxWXRMbHJweEZIQnBPUE9UNkFGOVZ4ZVdrakZZdk1aZ05JeTVIS3NQek1ON2RqQ1o1Skk?oc=5"
       ]
     },
     {
@@ -306,6 +419,56 @@
       "context": "Comprehensive analysis of Tennessee housing markets, including regional trends, affordability metrics, and demographic analysis with quarterly updates.",
       "excerpt": "Comprehensive analysis of Tennessee housing markets, including regional trends, affordability metrics, and demographic analysis with quarterly updates.",
       "relevance": "Academic research on Tennessee housing markets with regional breakdowns including the Tri-Cities area."
+    },
+    {
+      "id": 6,
+      "title": "All But One Tri-Cities County Markets Hang On As Seller’s Markets - don fenley @ core data",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbnUyRk9GSG01d0NHdjVyNUZDbVh4dTZZdnl6MTctalRpa3FkbDZEOElQZ3pYQ1JOVWJDall2RVpRSmhIT3Y2S0VLVjVkQWowYTlzLTNlMVczSnc2WlhQSjBTTXgtUlJzd1dmYUcxUTlKVDBnTVBBMHBPc19EVEphY2pGV1ZHT1J6d1ZrSDVjU1E4TUxPWkVUaVNfc2tEYVHSAaQBQVVfeXFMUFd6M19keG1JTkVfQTZ0RzhUMzlTY2YtM2dlMFMxS016YjAxeUNFVXZDZkVDWnVjdVFFR2FvVFk4SlMzZTFOTGZMeTBXWHhGYWRPVTd3X1N0Qi1abmc5NHJhQkdkYnZkLXYyamxiRE9mdzNUc1BOM1ZORkV3aGVwN18xY1d4dndVVUptbElkSGxXZUQwYTZ6RU82cHVQaFN2N0wxbWQ?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "All But One Tri-Cities County Markets Hang On As Seller’s Markets - don fenley @ core data",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 7,
+      "title": "Tri-Cities housing market still favors sellers, analyst says - WJHL",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPT1FzckZQNlBYOE0weUxnQ1ZqbFp2Sm1uUVRVMTFDSkxfSW1yZmZ6YjkySFBjRUV5bmtkeXpvTWdVVWY0VG9MTUU3a2FHWGhWUm5ZbXBtMlcxdG1EZHpqSUljaXhDSmdNNEc1RTdYWUp1YXlVSHB3ZDlITlJHclpfOGc3TVhtek5oRHQ5ZUFGM28wYTJRckpJ0gGcAUFVX3lxTE1vaGV6RHF4cUZuMFBOLXpjWC1jenJXQ0ZpZGlBYm1STm5MUFY1Y3lXVkhrdWdueXRQLXAyeHpwdy1mb2c3Z2c1UGNmY0tIcEVZSnk4TjQ1N1dqSTY0RmhHVktpM0ZlV1NiRTZwVzlyallzZlJUM0h3YWtvNDB1bjM3SFdqZXR3aHY5VktiT3JfX09QYjhIeHJhMFlvOQ?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Tri-Cities housing market still favors sellers, analyst says - WJHL",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 8,
+      "title": "Redfin’s 2026 Predictions: Welcome to The Great Housing Reset - Redfin",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5KcWcxMXZfZm5JRnZldG5iWlBER0xFSUdrRDFkcUNwT040SzYxRkFUOFQzaWtUS1NvN0pfOHRBZ0ZidEIwXzRINkVaRkFMZFh4R2hmT3VrbktZR2VUQnY5U1J1cFZHbXpIQy1zXw?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Redfin’s 2026 Predictions: Welcome to The Great Housing Reset - Redfin",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 9,
+      "title": "Don Fenley: Tri-Cities luxury home market up 17% - Kingsport Times News",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdVdXcDBVQmU5c0hlYm9DaGlZZzctUTl6VzB2dm53aE5xek5jMlU0TTVRQktLSGJMSXhUQlNHZUk0RWJaM19BTzdrOVozaUtvQVVuUDdPRWtmYU5talBtdmlrRmNzY0NCdC15TjI1U2c2Qk9WVW96aUJ2M1hMU2cxbEFJUy04QQ?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Don Fenley: Tri-Cities luxury home market up 17% - Kingsport Times News",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
+    },
+    {
+      "id": 10,
+      "title": "Tennessee Housing Market: Statistics and Forecast 2025-2026 - Norada Real Estate Investments",
+      "author": "News Source",
+      "year": 2026,
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1pSGE1Nksxci1FVVNza2theDJoV1prTVJINkxtazU2SUdpamE2b0xZSkV1MDZxcllYR1ZTZVlxWXRMbHJweEZIQnBPUE9UNkFGOVZ4ZVdrakZZdk1aZ05JeTVIS3NQek1ON2RqQ1o1Skk?oc=5",
+      "context": "Weekly Market Pulse (auto-generated) — local housing and development headline.",
+      "excerpt": "Tennessee Housing Market: Statistics and Forecast 2025-2026 - Norada Real Estate Investments",
+      "relevance": "Weekly headline for the Tri-Cities market pulse section."
     }
   ]
-} 
+}
