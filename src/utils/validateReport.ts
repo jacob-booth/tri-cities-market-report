@@ -97,13 +97,16 @@ export async function validateAndLoadReportData(): Promise<z.infer<typeof Report
   try {
     // Fetch the report data from public folder
     const response = await fetch('/tri-cities-market-report/data/report.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const reportData = await response.json();
     const validatedData = ReportDataSchema.parse(reportData);
-    console.log('✅ Report data validated successfully');
+    console.log('✅ Report data validated successfully', validatedData);
     return validatedData;
   } catch (error) {
     console.error('❌ Report data validation failed:', error);
-    throw new Error('Invalid report data structure');
+    throw error;
   }
 }
 
