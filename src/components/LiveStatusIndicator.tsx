@@ -16,7 +16,7 @@ const LiveStatusIndicator: React.FC<LiveStatusIndicatorProps> = ({ className = '
   const [isOnline, setIsOnline] = useState(true);
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [recentUpdates, setRecentUpdates] = useState<UpdateInfo[]>([]);
-  const [performanceScore, setPerformanceScore] = useState(98);
+  const [performanceScore, setPerformanceScore] = useState(98.0);
   const [activeUsers, setActiveUsers] = useState(0);
 
   // Simulate real-time updates
@@ -26,7 +26,10 @@ const LiveStatusIndicator: React.FC<LiveStatusIndicatorProps> = ({ className = '
       setLastUpdate(now);
       
       // Simulate performance monitoring
-      setPerformanceScore(prev => Math.max(95, Math.min(100, prev + (Math.random() - 0.5) * 2)));
+      setPerformanceScore(prev => {
+        const newScore = prev + (Math.random() - 0.5) * 2;
+        return parseFloat(Math.max(95, Math.min(100, newScore)).toFixed(1));
+      });
       
       // Simulate active users
       setActiveUsers(prev => Math.max(0, prev + Math.floor(Math.random() * 3) - 1));
@@ -113,7 +116,7 @@ const LiveStatusIndicator: React.FC<LiveStatusIndicatorProps> = ({ className = '
           </div>
           <div className="flex items-center space-x-1">
             <Zap className="w-3 h-3" />
-            <span>{performanceScore}%</span>
+            <span>{performanceScore.toFixed(1)}%</span>
           </div>
         </div>
       </div>
