@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Search, Moon, Sun, FileText } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, Moon, Sun, FileText, Menu, X } from 'lucide-react';
 import { useTheme } from '../store/useAppStore';
 import type { Section } from '../utils/validateReport';
 
@@ -23,6 +23,7 @@ const Navigation: React.FC<NavigationProps> = ({
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +55,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
   const handleNavClick = (sectionId: string) => {
     onNavigate(sectionId);
+    setMenuOpen(false); // Close menu on navigation
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ 
@@ -83,48 +85,57 @@ const Navigation: React.FC<NavigationProps> = ({
         className="fixed top-2 left-0 right-0 z-40 px-4"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="glass-effect rounded-2xl px-6 py-4 shadow-booth">
-            <div className="flex items-center justify-between">
+          <div className="glass-effect rounded-2xl px-4 lg:px-6 py-3 shadow-booth">
+            <div className="flex items-center justify-between gap-4">
               {/* BOOTH Logo */}
-              <div className="flex items-center space-x-4">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center space-x-3"
-                >
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <img 
-                      src="./booth-logo.png" 
-                      alt="BOOTH" 
-                      className="w-8 h-8 object-contain"
-                    />
-                  </div>
-                  <span className="font-cinzel text-xl font-semibold text-booth-gradient">
-                    BOOTH
-                  </span>
-                </motion.div>
-
-                {/* Navigation Links */}
-                <div className="hidden md:flex items-center space-x-6">
-                  {sections.map((section) => (
-                    <motion.button
-                      key={section.id}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => handleNavClick(section.id)}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        activeSection === section.id
-                          ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
-                          : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
-                      }`}
-                    >
-                      {section.title}
-                    </motion.button>
-                  ))}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center space-x-2 flex-shrink-0"
+              >
+                <div className="w-7 h-7 flex items-center justify-center">
+                  <img 
+                    src="./booth-logo.png" 
+                    alt="BOOTH" 
+                    className="w-7 h-7 object-contain"
+                  />
                 </div>
+                <span className="font-cinzel text-lg font-semibold text-booth-gradient">
+                  BOOTH
+                </span>
+              </motion.div>
+
+              {/* Navigation Links - Desktop */}
+              <div className="hidden xl:flex items-center gap-2 flex-1 max-w-4xl overflow-x-auto scrollbar-hide px-2">
+                {sections.map((section) => (
+                  <motion.button
+                    key={section.id}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleNavClick(section.id)}
+                    className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
+                      activeSection === section.id
+                        ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
+                    }`}
+                  >
+                    {section.title}
+                  </motion.button>
+                ))}
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center gap-2 flex-shrink-0">
+                {/* Menu Button - Show on medium/large screens that hide full nav */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="xl:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                  aria-label="Toggle menu"
+                >
+                  {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                </motion.button>
+
                 {/* Search Button */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -141,7 +152,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={onGlossaryClick}
-                  className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                  className="hidden sm:block p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
                   aria-label="Open glossary and citations"
                 >
                   <FileText className="w-5 h-5" />
@@ -159,6 +170,37 @@ const Navigation: React.FC<NavigationProps> = ({
                 </motion.button>
               </div>
             </div>
+
+            {/* Dropdown Menu - For medium/large screens without full nav */}
+            <AnimatePresence>
+              {menuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="xl:hidden mt-3 pt-3 border-t border-white/20 dark:border-gray-700/50"
+                >
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-96 overflow-y-auto">
+                    {sections.map((section) => (
+                      <motion.button
+                        key={section.id}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => handleNavClick(section.id)}
+                        className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors text-left ${
+                          activeSection === section.id
+                            ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                            : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700/30'
+                        }`}
+                      >
+                        {section.title}
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </motion.nav>

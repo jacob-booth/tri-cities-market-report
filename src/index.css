@@ -195,6 +195,7 @@
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -208,6 +209,16 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply from-primary-500 to-secondary-500;
+}
+
+/* Hide scrollbar for navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 /* Dark mode transitions */
