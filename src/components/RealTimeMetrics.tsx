@@ -148,7 +148,7 @@ const RealTimeMetrics: React.FC<RealTimeMetricsProps> = ({ className = '' }) => 
               </div>
               
               <div className="space-y-1">
-                <div className="text-2xl font-bold text-white">
+                <div className="text-2xl font-bold text-white break-all">
                   {metric.value}
                 </div>
                 <div className="text-xs text-white/60">

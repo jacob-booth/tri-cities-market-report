@@ -51,8 +51,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
     {
       icon: Users,
       value: data.populationGrowth,
-      label: 'Population Growth',
-      suffix: ' residents',
+      label: 'Population Growth (2021-2023)',
+      suffix: ' added',
       color: 'from-primary-500 to-primary-600',
       bgColor: 'from-primary-50 to-primary-100',
     },
