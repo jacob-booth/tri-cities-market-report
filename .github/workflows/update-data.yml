@@ -1,0 +1,50 @@
+name: Update Real-Time Market Data
+
+on:
+  schedule:
+    # Run every 6 hours (4 times a day)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Fetch real-time data
+        run: |
+          echo "Fetching real-time data for Tri-Cities Market Report..."
+          chmod +x scripts/fetch-real-data.js
+          node scripts/fetch-real-data.js
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name 'GitHub Actions Bot'
+          git config user.email 'actions@github.com'
+      
+      - name: Commit and push changes
+        run: |
+          git add src/data/report.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "data: update real-time market data
+          
+          - Automated data fetch from DataUSA, Census API
+          - Updated population, income, and employment metrics
+          - Data sources: DataUSA API, US Census Bureau
+          - Timestamp: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git push
